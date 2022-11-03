@@ -1,0 +1,77 @@
+﻿<!--=================Trang detail cho các service đã được customer đăng ký.================= -->
+
+
+@model Batch155SMSOnline3.Models.Service
+
+@{
+    ViewBag.Title = "Detail_RegisteredService";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
+    decimal y = Model.Price.Value;
+
+    var activeInfo = (Batch155SMSOnline3.Models.Active)ViewBag.acti;
+}
+
+
+<section class="service-section padding-bottom padding-top">
+    <div class="container">
+        <div class="section-header">
+            <span class="cate">Hi there</span>
+            <h2 class="title">This is @Model.ServiceName has you registed</h2>
+        </div>
+        <div class="row justify-content-center mb-30-none">
+            <dl class="dl-horizontal">
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ServiceImage)
+                </dt>
+
+                <dd>
+                    <img src="~/@Html.DisplayFor(model => model.ServiceImage)" alt="Image loading.." style="height:100px;width:150px;" />
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LevelService.LevelName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LevelService.LevelName)
+                </dd>
+
+                <dt>
+                    Expiration date
+                </dt>
+
+                <dd>
+                    @Html.DisplayName(activeInfo.EndService.Value.ToString("dd/MM/yyyy"))
+                </dd>
+            </dl>
+            <hr />
+
+
+
+        </div>
+        <div class="row justify-content-end mb-30-none">
+
+            <div class="card">
+                <div class="card-block">
+
+                    <a href="@Url.Action("Index", "ServiceCus")" class="btn waves-effect waves-light btn-inverse btn-outline-inverse">
+                        <i class="icofont icofont-exchange"></i>
+                        <span>
+                            <strong>Back to List.</strong>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

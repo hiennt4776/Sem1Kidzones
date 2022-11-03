@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Message>
+
+@{
+    ViewBag.Title = "ReceivedMessage";
+    Layout = "~/Areas/Admin/Views/_LayoutDashboard.cshtml";
+}
+
+<h2>Send Message of @ViewBag.Username</h2>
+
+
+<table class="table">
+    <tr>
+
+
+        <th>
+            Username Sent
+        </th>
+        <th>
+            Phone Number Sent
+        </th>
+
+        <th>
+            TimeMessage
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Username)
+            </td>
+       
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.PhoneNumber)
+                </td>
+         
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeMessage)
+            </td>
+
+
+
+            <td>
+
+                @Html.ActionLink("DetailMessage", "DetailMessage", new { id = item.Id }) |
+
+            </td>
+        </tr>
+    }
+
+</table>

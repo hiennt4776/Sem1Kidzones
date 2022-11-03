@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Friend>
+@{
+    ViewBag.Title = "SendReceiveFriends";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+<br />
+<style>
+    .online {
+        position: relative;
+    }
+    .online-list {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .online-list .online {
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+        .online-list .online img {
+        width: 50px;
+        border-radius: 50%;
+    }
+
+</style>
+<section>
+
+    <br />
+    <div class="container">
+        <div class="row">
+            
+
+
+            <div class="col-md-6">
+
+                <h3>Sent Friends</h3>
+                <br />
+                @foreach (var item in Model)
+                {
+
+
+           
+                        if (item.IdUserFriendSend == int.Parse(User.Identity.Name))
+                        {
+                            <div class="online-list">
+                                <div class="col-md-2 online">
+                                    <img src="@Url.Content("~/"+ Html.DisplayFor(modelItem => item.Customer1.Image))">
+                                </div>
+                                <div class="col-md-6 online">
+                         
+                                    <div>@Html.DisplayFor(modelItem => item.Customer1.CustomerName)</div>
+                                    <div>Phone: @Html.DisplayFor(modelItem => item.Customer1.PhoneNumber)</div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href='@Url.Action("DeleteSendFriend", "Friends", new { id = item.Id })' style="color:red">
+              
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    
+
+                  
+                }
+
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h3>Receive Friends</h3>
+                <br />
+                @foreach (var item in Model)
+                {
+
+                    if (item.IdUserFriendSend != int.Parse(User.Identity.Name))
+                    {
+
+                        <div class="online-list">
+                            <div class="col-md-2 online">
+                                <img src="@Url.Content("~/"+ Html.DisplayFor(modelItem => item.Customer.Image))">
+                            </div>
+                            <div class="col-md-6 online">
+
+                                <div>@Html.DisplayFor(modelItem => item.Customer.CustomerName)</div>
+                                <div>Phone: @Html.DisplayFor(modelItem => item.Customer.PhoneNumber)</div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <a href='@Url.Action("ConfirmFriend", "Friends", new { id = item.Id })'>Confirm</a>
+                                <a href='@Url.Action("DeleteSendFriend", "Friends", new { id = item.Id })' style="color:red">Delete</a>
+                            </div>
+                        </div>
+
+                    }
+
+                }
+            </div>
+               
+                </div>
+
+        </div>
+
+</section>
+
+  

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{site/siteLayout.html}"
+    >
+
+    <head>
+    </head>
+
+    <body>
+
+	<th:block layout:fragment="content">
+
+		<div class="breadcrumbs-two">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs-img" style="background-image: url(/site/images/cover-img-1.jpg);">
+							<h2>Men's</h2>
+						</div>
+						<div class="menu text-center">
+							<p><a href="#">New Arrivals</a> <a href="#">Best Sellers</a> <a href="#">Extended Widths</a> <a href="#">Sale</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="colorlib-featured">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(/site/images/men.jpg);">
+								<h2>Casuals</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(/site/images/women.jpg);">
+								<h2>Dress</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 text-center">
+						<div class="featured">
+							<div class="featured-img featured-img-2" style="background-image: url(/site/images/item-11.jpg);">
+								<h2>Sports</h2>
+								<p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="colorlib-product">
+			<div class="container">
+				
+				 
+				
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><a href="#" class="btn btn-primary btn-lg">View All Products</a></p>
+					</div>
+				</div>
+				<div class="row row-pb-md" >
+
+					<th:block th:each="sType, iStat : ${shoesWomen.content}">
+						<div class="col-lg-3 mb-4 text-center">
+							<div class="product-entry border" >
+								<a th:href="@{'/site/shoes/shoesDetail/' + ${sType.shoesTypeId}}" class="prod-img">
+									<img 
+										th:src="${sType.image != null ? '/site/home/images/' + sType.image 
+																		: '/site/home/images/no-image-available.jpg' }"
+										 
+										style="width:253px;height:253px;"
+										alt=""
+									>							
+								</a>
+								<div class="desc">
+									<h2><a th:href="@{'/site/shoes/shoesDetail/' + ${sType.shoesTypeId}}" th:text="${sType.name}">Women's Boots Shoes Maca</a></h2>
+									<span class="price" th:text="${sType.unitPrice}">$139.00</span>
+								</div>
+							</div>
+						</div>
+						
+						<th:block th:if="${(iStat.index+1) % 4 ==0 || (iStat.index+1) == iStat.size}">
+							<div class="w-100"></div>
+						</th:block>
+					</th:block>
+
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="block-27" th:if="${shoesWomen.totalPages > 0}">
+							<ul >
+								<li th:class="${1 == shoesWomen.number + 1} ? 'page-item active' : 'page-item'">
+								  <a th:href="@{/admin/brands/searchpaginated(name=${name}, size=${shoesWomen.size}, page=${1})}" class="page-link">First</a>
+								</li>
+								
+								<li class="page-item active"
+									th:each="pageNumber : ${pageNumbers}"
+									th:if="${shoesWomen.totalPages > 1}"
+									th:class = "${pageNumber == shoesWomen.number + 1} ? 'page-item active' : 'page-item'">
+									<a th:href="@{/admin/brands/searchpaginated(name=${name}, size=${shoesWomen.size}, page=${pageNumber})}"
+										 class="page-link"
+										th:text="${pageNumber}"></a>
+								</li>
+								
+								
+								<li th:class="${shoesWomen.totalPages == shoesWomen.number + 1} ? 'page-item active': 'page-item'">
+								<a th:href="@{/admin/brands/searchpaginated(name=${name}, size=${shoesWomen.size}, page=${shoesWomen.totalPages})}"
+									class="page-link" >Last</a>
+								</li>
+							  
+							</ul>
+		            	</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</th:block>
+	
+	
+
+</body>
+</html>

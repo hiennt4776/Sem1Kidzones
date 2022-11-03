@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Customer>
+
+<div  class="friends-box">
+    @foreach (var item in Model)
+    {
+            <div>
+                <a href='@Url.Action("ProfilePage","Customer", new { id = item.Id}, null)'>
+                    <img src='@Url.Content("~/"+ item.Image)' width="200" height="200" />
+                </a>
+                <p>
+                    @Html.ActionLink(item.CustomerName, "ProfilePage", "Customer", new { id = item.Id }, null)
+                </p>
+            </div>
+    }
+
+</div>

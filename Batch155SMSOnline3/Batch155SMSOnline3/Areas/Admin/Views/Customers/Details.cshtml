@@ -1,0 +1,229 @@
+﻿@model Batch155SMSOnline3.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/_LayoutDashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Username:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+
+        <dt>
+            Customer Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        @if (Model.Gender == true)
+        {
+            <dd>Male</dd>
+        }
+        else
+        {
+            <dd>Female</dd>
+        }
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            PhoneNumber
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            VerifyCode
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VerifyCode)
+        </dd>
+
+        <dt>
+            Active
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+
+        <dt>
+            Image
+        </dt>
+        <dd>
+            <img src="~/@Html.DisplayFor(model => model.Image)" alt="Image loading.." style="height:50px;width:50px;" />
+        </dd>
+
+
+        <dt>
+            Date Of Birth
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            Speed SMS API
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpeedSMSAPI)
+        </dd>
+
+        <dt>
+            deviceID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deviceID)
+        </dd>
+
+
+        <dt>
+            Address
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            Date Of Registration
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfRegistration)
+        </dd>
+
+        <dt>
+            Hobbies
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hobbies)
+        </dd>
+
+        <dt>
+            Likes
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Likes)
+        </dd>
+
+        <dt>
+            Dislike
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dislike)
+        </dd>
+
+        <dt>
+            Cuisines
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuisines)
+        </dd>
+
+        <dt>
+            Sports
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sports)
+        </dd>
+
+        <dt>
+            Qualification
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qualification)
+        </dd>
+
+        <dt>
+            School
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.School)
+        </dd>
+
+        <dt>
+            College
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.College)
+        </dd>
+
+        <dt>
+            Organization
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Organization)
+        </dd>
+
+        <dt>
+            Designation
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+
+
+        <dt>
+            Marital Status
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaritalStatu.MaritalStatusName)
+        </dd>
+
+        <dt>
+            Work Status Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkStatu.WorkStatusName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

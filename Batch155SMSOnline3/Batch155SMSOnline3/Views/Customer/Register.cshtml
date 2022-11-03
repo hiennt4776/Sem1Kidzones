@@ -1,0 +1,287 @@
+﻿@model Batch155SMSOnline3.Models.Customer
+@using CaptchaMvc.HtmlHelpers;
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+
+<style>
+    .form-group small {
+        color: #e74c3c;
+        font-size: 16px;
+        visibility: hidden;
+    }
+
+    .form-group.error small {
+        visibility: visible;
+    }
+</style>
+
+<section class="hero-area bg_img" data-background="../../Content/SMS/assets/images/page-header.jpg">
+        <div class="container">
+            <h1 class="title m-0">my account</h1>
+        </div>
+    </section>
+    <section class="account-section padding-top padding-bottom bg_img bg_xxl_contain bg_right_bottom">
+        <div class="container">
+            <div class="account-wrapper">
+                <div class="account-area">
+                    <h3 class="account-title">create new account</h3>
+                    @using (Html.BeginForm("Register", "Customer", FormMethod.Post, htmlAttributes: new { @enctype = "multipart/form-data", @id = "sign-up-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label class="control-label">Username</label>
+                                    <div>
+                                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-group", @id = "username" } })
+                                        <small>Error message</small>
+                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                        @if (ViewBag.errorUsername != null)
+                                        {
+                                            <p class="text-danger">@ViewBag.errorUsername</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                   <label class="control-label">Customer Name</label>
+                                    <div>
+                                        @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-group", @id = "customerName" } })
+                                        @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                                        <small>Error message</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <div>
+                                        @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-group" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        <small>Error message</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Confirm Password</label>
+                                    <div>
+                                        <input class="form-group" type="password" id="confirmPassword" />
+                                        <small>Error message</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                <label class="control-label">Email</label>
+                                    <div>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-group", @id = "email" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        <small>Error message</small>
+                                        @if (ViewBag.errorEmail != null)
+                                        {
+                                            <p class="text-danger">@ViewBag.errorEmail</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Number</label>
+                                    <div>
+                                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-group", @id = "phoneNumber", @placeholder = "849xxxxxxxx"} })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                        <small>Error message</small>
+
+                                        @if (ViewBag.errorPhoneNumber != null)
+                                        {
+                                            <p class="text-danger">@ViewBag.errorPhoneNumber</p>
+                                        }
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Gender</label>
+                                    @Html.DropDownListFor(model => model.Gender, new SelectList(new List<Object>{
+                                        new { value = true , text = "Male"},
+                                        new { value = false , text = "Female" }
+                                    }, "value", "text"))
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Day Of Birth</label>
+                                   <div class="col-md-10">
+                                        @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                                        <br />
+                                        @if (ViewBag.errorBirthDay != null)
+                                        {
+                                            <p class="text-danger">@ViewBag.errorBirthDay</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div>
+                                        @Html.Captcha(refreshText: "Try Another", inputText: "Enter the text you see above", length: 5, requiredMessageText: "Is required field", addValidationSpan: true)
+                                        <br />
+                                        <p class="text-danger">@ViewBag.ErrorMessageCaptcha</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group w-100">
+                                <input type="submit" value="Register">
+                            </div>
+
+                        </div>
+
+
+
+                }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+   const form = document.getElementById('sign-up-form');
+    const username = document.getElementById('username');
+    const password = document.getElementById('Password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const customerName = document.getElementById('customerName');
+    const email = document.getElementById('email');
+    const phoneNumber = document.getElementById('phoneNumber');
+
+    form.addEventListener('submit', e => {
+        if (!checkInputs()) e.preventDefault();
+
+
+    });
+
+    function checkInputs() {
+
+        const usernameValue = username.value.trim();
+        const emailValue = email.value.trim();
+        const passwordValue = password.value;
+        const confirmPasswordValue = confirmPassword.value;
+        const customerNameValue = customerName.value.trim();
+        const phoneNumberValue = phoneNumber.value.trim();
+       
+        var usernameBoolean = new Boolean(true);
+        var emailBoolean = new Boolean(true);
+        var passwordBoolean = new Boolean(true);
+        var confirmPasswordBoolean = new Boolean(true);
+        var customerNameBoolean = new Boolean(true);
+        var phoneNumberBoolean = new Boolean(true);
+
+      
+
+        if (usernameValue === '') {
+            setErrorFor(username, 'Username cannot be blank');
+            usernameBoolean = false;
+        }
+        else {
+            setSuccessFor(username)
+        }
+
+        if (emailValue === '') {
+            setErrorFor(email, 'Email cannot be blank');
+            emailBoolean = false;
+        }
+        else {
+            setSuccessFor(email)
+        }
+
+        if (passwordValue === '') {
+            setErrorFor(password, 'Password cannot be blank');
+            passwordBoolean = false;
+        }
+        else {
+            setSuccessFor(password)
+        }
+
+        if (confirmPasswordValue === '') {
+            setErrorFor(confirmPassword, 'Confirm Password cannot be blank');
+            confirmPasswordBoolean = false;
+        } else if (passwordValue !== confirmPasswordValue) {
+            setErrorFor(confirmPassword, 'Passwords does not match');
+            confirmPasswordBoolean = false;
+        }
+        else {
+            setSuccessFor(confirmPassword)
+        }
+
+
+        if (customerNameValue === '') {
+            setErrorFor(customerName, 'Customer Name cannot be blank');
+            customerNameBoolean = false;
+        }
+        else {
+            setSuccessFor(customerName)
+        }
+
+        if (phoneNumberValue === '') {
+            setErrorFor(phoneNumber, 'Phone Number cannot be blank');
+            phoneNumberBoolean = false;
+        }
+        else if (!isPhone(phoneNumberValue)) {
+            setErrorFor(phoneNumber, 'Not a valid phone');
+            phoneNumberBoolean = false;
+        } 
+        else {
+            setSuccessFor(phoneNumber)
+        }
+
+
+        return (usernameBoolean && emailBoolean && passwordBoolean && confirmPasswordBoolean && customerNameBoolean && phoneNumberBoolean);
+
+    }
+
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        formControl.className = 'form-group error';
+        small.innerText = message;
+    }
+
+    function setSuccessFor(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'form-group';
+    }
+
+
+    function isPhone(phone) {
+        return /^((849|843|847|848|845)+([0-9]{8}))$/.test(phone);
+    }
+
+
+
+
+</script>

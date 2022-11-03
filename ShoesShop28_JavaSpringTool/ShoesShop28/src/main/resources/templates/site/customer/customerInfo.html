@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{site/siteCartLayout.html}">
+  	<head>
+  		
+  	</head>
+  	<body>
+		
+			<div class="container-fluid" layout:fragment="content">
+				<div class="row">
+					<div class="col-6 offset-3 mt-4">
+						<form th:action="@{/saveCustomerInfo}" method="post" th:object="${customerInfo}" id="cusInfo">
+							<div class="card">
+				
+								<div class="card-body">
+									<div th:if="@{message != null}" role="alert">
+										<div>
+											<i>[[${message}]]</i>
+										</div>
+				
+									</div>
+									<div class="form-group form-primary">
+										<label for="name"><span style="color: red;">*</span>Your name</label>
+	                                    <input type="text" th:field="*{name}" class="form-control" id="exampleName">
+	                                    
+	                                </div>
+	                              
+	                                <div class="form-group">
+	                                    <label for="Gender">Gender: </label>
+	                                    <label class="checkbox-inline"> 
+	                                        <input type="radio" name="gender" value="1" th:field="*{gender}" checked>
+	                                        Male
+	                                    </label> 
+	        
+	                                        &ensp; 
+	        
+	                                    <label class="checkbox-inline"> 
+	                                        <input type="radio" name="gender" value="0" th:field="*{gender}">
+	                                        Female
+	                                    </label>
+	        
+	                                </div>
+	                                <div class="form-group form-primary">
+	                                	
+	                                	<label for="email"><span style="color: red;">*</span>Your Email Address</label>
+	                                    <input type="text" th:field="*{email}" class="form-control" id="exampleRepeatEmail">
+	                                    
+	                                    
+                                	</div>
+                                	
+                                	<div class="form-group form-primary">
+	                                    
+	                                   
+	                                    <label for="phone">Phone number</label>
+	                                    <input type="text" th:field="*{phone}" class="form-control" id="exampleName">
+                                	</div>
+                                
+	                                <div class="form-group form-primary">
+	                                    
+	                                    
+	                                    <label for="address">Address</label>
+	                                    <input type="text" th:field="*{address}" class="form-control" id="exampleName">
+	                                </div>
+				
+								</div>
+								<div class="card-footer text-muted">
+									<button type="reset" class="btn btn-secondary">Reset</button>
+				
+									<button class="btn btn-primary" onclick="submitForm();">
+										<i class="fas fa-save"></i> OK
+									</button>
+								</div>
+				
+				
+							</div>
+						</form>
+				
+					</div>
+					<!-- end of col-sm-12 -->
+				</div>
+				<script type="text/javascript" src="/adasserts/js/jquery/jquery.min.js "></script>
+				<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+				<script type="text/javascript">
+
+					function submitForm()
+				    {
+						$("#cusInfo").validate({
+				            rules:
+				                {
+				                    
+				            	 "name":
+			                        {
+			                            required: true
+			                        },
+			                     "email":{
+			                        required: true,
+			                        email: true
+			                    	}
+				                },
+				            messages:
+				                {
+				                    
+				            	"name":
+		                        	{
+		                            	required: "Vui lòng nhập"
+		                        	},
+		                    	"email":{
+		                        	required: "vui lòng nhập",
+		                        	email: "Nhập đúng định dạng"
+		                    		}
+				                }
+				        });
+				    }
+				</script>
+			</div>
+	</body>
+</html>

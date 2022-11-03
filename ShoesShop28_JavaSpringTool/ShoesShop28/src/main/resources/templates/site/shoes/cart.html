@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{site/siteCartLayout.html}">
+  	<head>
+  	
+  	</head>
+  	<body>
+		
+			<div class="page-wrapper" layout:fragment="content">
+				<div class="colorlib-product">
+					<div class="container">
+						<div class="row row-pb-lg">
+							<div class="col-md-10 offset-md-1">
+								<div class="process-wrap">
+									<div class="process text-center active">
+										<p><span>01</span></p>
+										<h3>Shopping Cart</h3>
+									</div>
+									<div class="process text-center">
+										<p><span>02</span></p>
+										<h3>Checkout</h3>
+									</div>
+									<div class="process text-center">
+										<p><span>03</span></p>
+										<h3>Order Complete</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row row-pb-lg">
+							<div class="col-md-12">
+			
+								<div class="product-name d-flex">
+			
+									<div class="one-forth text-left px-4">
+										<span>Product Details</span>
+									</div>
+			
+									<div class="one-eight text-center">
+										<span>Size</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Price unit</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Sub Total</span>
+									</div>
+									<div class="one-eight text-center">
+										<span>Quantity</span>
+									</div>
+			
+									<div class="one-eight text-center px-4">
+										<span>Remove</span>
+									</div>
+								</div>
+			
+								<th:block th:if="${session.cartSession != null}">
+									<div class="product-cart d-flex" th:each="item:${session.cartSession.items}">
+			
+										<div class="one-forth">
+											<div class="product-img">
+			
+												<img id="image" th:src="${'/site/home/images/' + item.shoes.shoesType.image}"
+													class="product-img" alt="">
+											</div>
+											<div class="display-tc">
+												<h3 th:text="${item.shoes.shoesType.name}"></h3>
+											</div>
+										</div>
+			
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="sizeNumber" th:text="${item.shoes.shoesSize.sizeNumber}"></span>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price" th:text="${item.shoes.shoesType.unitPrice}"></span>
+											</div>
+										</div>
+										<div class="one-eight text-center">
+											<div class="display-tc">
+												<span class="price" th:text="${item.subTotal}"></span>
+											</div>
+										</div>
+										<form th:action="@{/site/shoes/update}" method="post" class="one-eight">
+											<div class="display-tc">
+												<input type="hidden" th:value="${item.shoes.shoesId}" name="id" />
+												<input type="number" id="quantity" name="quantity" th:value="${item.quantity}"
+													min="0" max="10" class="form-control input-number text-center">
+											</div>
+											<div class="display-tc">
+												<button style="border: none" type="submit" class="icon-loop2"></button>
+											</div>
+										</form>
+										<form th:action="@{/site/shoes/remove}" method="post" class="one-eight text-center">
+											<div class="display-tc">
+												<input type="hidden" th:value="${item.shoes.shoesId}" name="id" />
+												<button style="border: none" type="submit" class="closed"></button>
+											</div>
+										</form>
+			
+			
+			
+									</div>
+			
+								</th:block>
+			
+			
+			
+							</div>
+						</div>
+						<div class="row row-pb-lg">
+							<div class="col-md-12">
+								<div class="total-wrap">
+									<div class="row">
+										<div class="col-sm-8">
+			
+											<div class="row form-group">
+												<div th:if="${session.customer_session == null}" class="col-sm-3">
+													<span style="color: red;">You need to Login to checkout!!!</span>
+													<button type="submit" class="btn btn-secondary disabled">Checkout now!</button>
+												</div>
+												<div th:if="${session.customer_session != null}" class="col-sm-3">
+													<!-- <button type="submit" class="btn btn-secondary ">Checkout now!</button> -->
+													<!-- <input type="submit" value="Checkout now!" class="btn btn-primary"> -->
+													<form method="post" th:action="@{/pay}">
+														<input type="hidden" th:value="${session.cartSession.total}" name="price" />
+														<button type="submit" class="btn btn-primary"> Checkout now! </button>
+													</form>
+												</div>
+											</div>
+			
+										</div>
+										<div class="col-sm-4 text-center" th:if="${session.cartSession != null}">
+											<div class="total">
+												<!-- <div class="sub">
+														<p><span>Subtotal:</span> <span th:text="${session.cartSession.total}"></span></p>
+														<p><span>Delivery:</span> <span>$0.00</span></p>
+														<p><span>Discount:</span> <span>$45.00</span></p>
+													</div> -->
+												<div class="grand-total">
+													<p><span><strong>Total:</strong></span><span
+															th:text="${session.cartSession.total}"></span></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			
+						<div class="row">
+							<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+								<h2>Other Products</h2>
+							</div>
+						</div>
+						<div class="row">
+							<th:block th:each="sType, iStat : ${otherShoes}">
+								<div class="col-lg-3 mb-4 text-center">
+									<div class="product-entry border">
+										<a th:href="@{'/site/shoes/shoesDetail/' + ${sType.shoesTypeId}}" class="prod-img">
+											<img th:src="${sType.image != null ? '/site/home/images/' + sType.image 
+																					: '/site/home/images/no-image-available.jpg' }" style="width:253px;height:253px;" alt="">
+										</a>
+										<div class="desc">
+											<h2><a th:href="@{'/site/shoes/shoesDetail/' + ${sType.shoesTypeId}}"
+													th:text="${sType.name}">Women's Boots Shoes Maca</a></h2>
+											<span class="price" th:text="${sType.unitPrice}">$139.00</span>
+										</div>
+									</div>
+								</div>
+			
+								<th:block th:if="${(iStat.index+1) % 4 ==0 || (iStat.index+1) == iStat.size}">
+									<div class="w-100"></div>
+								</th:block>
+							</th:block>
+			
+						</div>
+					</div>
+			
+			
+				</div>
+			</div>
+	</body>
+</html>
+

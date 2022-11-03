@@ -1,0 +1,250 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Customer>
+@{
+    ViewBag.Title = "ListFriends";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+<style>
+    .profile-container {
+        padding: 20px 15%;
+        color: #626262;
+    }
+
+    .cover-img {
+        width: 100%;
+        border-radius: 6px;
+        margin-bottom: 14px;
+    }
+
+    .profile-details {
+        background: var(--bg-color);
+        padding: 20px;
+        border-radius: 4px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .pd-row {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .pd-image {
+        width: 100px;
+        margin-right: 20px;
+        border-radius: 6px;
+    }
+
+    .pd-row div h3 {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .pd-row div p {
+        font-size: 13px;
+    }
+
+    .pd-row div img {
+        width: 25px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+
+    .pd-right button {
+        background: #1876f2;
+        border: 0;
+        outline: 0;
+        align-items: center;
+        color: #fff;
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+        .pd-right button img {
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .pd-right button:first-child {
+            background: #e4e6eb;
+            color: #000;
+        }
+
+    .pd-right {
+        text-align: right;
+    }
+
+        .pd-right a {
+            background: #e4e6eb;
+            border-radius: 3px;
+            padding: 12px;
+            display: inline-flex;
+            margin-top: 30px;
+        }
+
+            .pd-right a img {
+                width: 20px;
+            }
+
+    .profile-info {
+        display: flex;
+        align-self: flex-start;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .info-col {
+        flex-basis: 33%;
+    }
+
+    .post-col {
+        flex-basis: 65%;
+    }
+
+    .profile-intro {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+    }
+
+        .profile-intro h3 {
+            font-weight: 600;
+        }
+
+    .intro-text {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 15px;
+    }
+
+        .intro-text img {
+            width: 15px;
+            margin-bottom: -3px;
+        }
+
+    .profile-intro hr {
+        border: 0;
+        height: 1px;
+        background: #ccc;
+        margin: 24px 0;
+    }
+
+    .profile-intro ul li {
+        list-style: none;
+        font-size: 15px;
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+    }
+
+        .profile-intro ul li img {
+            width: 26px;
+            margin-right: 10px;
+        }
+
+    .title-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        .title-box a {
+            text-decoration: none;
+            color: #1876f2;
+            font-size: 14px;
+        }
+
+    .photo-box {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-gap: 10px;
+        margin-top: 15px;
+    }
+
+        .photo-box div img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+    .profile-intro p {
+        font-size: 14px;
+    }
+
+    .friends-box {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        grid-gap: 10px;
+        margin-top: 15px;
+    }
+
+        .friends-box div img {
+            width: 100%;
+            cursor: pointer;
+            padding-bottom: 20px;
+        }
+
+        .friends-box div {
+            position: relative;
+        }
+
+        .friends-box p {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+</style>
+
+
+
+<div class="profile-container">
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-sm-12">
+                    <div class="profile-intro">
+                        @if ((int)ViewBag.ID == int.Parse(User.Identity.Name))
+                        {
+                            <h3>Your Friends</h3>
+                        }
+                        else
+                        {
+                            <h3>Friends of @ViewBag.Customer</h3>
+                        }
+
+
+                        <p>@ViewBag.CountFriend Friends</p>
+
+                        <div class="friends-box">
+                            @foreach (var item in Model)
+                            {
+
+                                <div>
+                                    <a href='@Url.Action("ProfilePage","Customer", new { id = item.Id})'>
+                                        <img src='@Url.Content("~/"+ item.Image)' width="200" height="200" />
+                                    </a>
+                                    <p>
+                                        @Html.ActionLink(item.CustomerName, "ProfilePage", "Customer", new { id = item.Id }, null)
+                                    </p>
+                                </div>
+
+                            }
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</div>

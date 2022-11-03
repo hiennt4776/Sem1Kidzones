@@ -1,0 +1,97 @@
+.mathsizer {
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: left;
+    color: green;
+    font-size: 30px;
+    /*color: #5dca4c;*/
+}
+
+P.mathfont {
+    font-size: 18px;
+    line-height: 1.39;
+    color: green;
+}
+
+.product {
+    padding: 30px;
+
+
+}
+
+.product2 {
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    height: 170px;
+
+}
+.product3 {
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+}
+
+.btn-start {
+    color: #ffffff;
+    background: #51d466;
+    border: 1px solid #30c247;
+}
+
+/*kẻ dòng tiêu đề*/
+
+.lined-heading {
+    z-index: 2;
+    position: relative;
+    margin-top: 0;
+    /*margin-bottom: 50px;*/
+    text-align: center;
+    display: block;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #5e5e5e;
+    font-size: 30px;
+}
+
+h2.lined-heading:before {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-top: 2px solid #ccc;
+    content: "";
+}
+
+h2.lined-heading span {
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+    background: #ffedd5;
+    display: inline-block;
+    /*padding: 10px 10px 50px 20px;*/
+    text-align: left;
+    color: green;
+}
+
+/*end kẻ dòng*/
+.mb4 {
+    color: green;
+}
+.btn-start {
+    color: #ffffff;
+    background: #51d466;
+    border: 1px solid #30c247;
+}
+
+
+audio {
+    width: 222px;
+    height: 60px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.pad{padding: 30px;}

@@ -1,0 +1,72 @@
+﻿@model Batch155SMSOnline3.Models.Message
+
+@{
+    ViewBag.Title = "DetailMessage";
+    Layout = "~/Areas/Admin/Views/_LayoutDashboard.cshtml";
+}
+
+<h3>Detail Message</h3>
+
+<div>
+    <h4>Message</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            Username Send
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Username)
+        </dd>
+        @if (ViewBag.PhoneNumber != null)
+        {
+            <dt>
+                Username Receive
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer1.Username)
+            </dd>
+        }
+
+
+        <dt>
+            TimeMessage
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeMessage)
+        </dd>
+
+        <dt>
+            Phone Number Receive
+        </dt>
+        @if (ViewBag.PhoneNumber != null)
+        {
+            <dd>@ViewBag.PhoneNumber</dd>
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumberReceive)
+            </dd>
+
+        }
+
+
+        <dt>
+            Content Message
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContentMessage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

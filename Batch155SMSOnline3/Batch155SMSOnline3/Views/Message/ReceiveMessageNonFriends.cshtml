@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Message>
+@{
+    ViewBag.Title = "SentMessageNonFriends";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+<script>
+        function autoRefresh() {
+            window.location = window.location.href;
+        }
+        setInterval('autoRefresh()', 10000);
+</script>
+
+<section class="privacy-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 d-md-block d-none">
+                <div class="privacy-sidebar-content">
+                    <ul>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("SendMessageNonFriends","Message")">New Message</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("SentMessageNonFriends","Message")">Sent Message</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("ReceiveMessageNonFriends","Message")">Receive Message</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h3>Message received from non-friends </h3>
+
+
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Phone Number Receive
+                        </th>
+                        <th>
+                            Content Message
+                        </th>
+                        <th>
+                            Time Message
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if (item.IdUserReceive != null)
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Customer.PhoneNumber)
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumberReceive)
+                                </td>
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContentMessage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TimeMessage)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+
+            </div>
+
+        </div>
+
+        <br />
+    </div>
+</section>
+

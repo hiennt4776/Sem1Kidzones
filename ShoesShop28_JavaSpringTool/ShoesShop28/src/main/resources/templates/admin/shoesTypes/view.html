@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+
+		<div class="pcoded-inner-content">
+			<div class="main-body">
+				<div class="page-wrapper">
+					<div class="page-body">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="card" th:object="${shoesType}">
+									<div class="card-header">
+										<h4 th:text="*{name}"></h4>
+									</div>
+									<div class="card-block">
+										<div class="row">
+											<div class="col-7">
+												<div>
+													<h6>Gender:</h6>
+													<p th:text="*{gender} ? 'Male' : 'Female'"></p>
+												</div>
+
+												<div>
+													<h6>Unit Price:</h6>
+													<p th:text="*{unitPrice}"></p>
+												</div>
+   													<div>
+	                                                    	<h6>Brand:</h6>
+	                                                    	<p th:text="*{brand.name}"></p>
+	                                                    </div>
+												<div>
+													<h6>Status:</h6>
+													<p th:text="*{status}"></p>
+												</div>
+
+											</div>
+
+
+											<div class="col-3">
+												<img id="image"
+													th:src="${'/admin/shoesTypes/images/' + shoesType.image}"
+													width="90%" class="img-fluid" alt="">
+											</div>
+
+											<div class="col-12">
+												<h6>Description:</h6>
+												<p th:text="*{description}"></p>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>

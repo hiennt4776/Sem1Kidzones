@@ -1,0 +1,207 @@
+
+/*index*/
+
+#slider {
+    width: 100%;
+    padding: 0;
+    margin-top: -26px;
+}
+
+.welcomesizer {
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+    text-align: center;
+    color: green;
+    /*color: #5dca4c;*/
+}
+
+P.welfont {
+    font-size: 18px;
+    line-height: 1.39;
+    color: green;
+}
+
+
+.product {
+    text-align: center;
+    margin: 50px;
+}
+
+.btn-start {
+    color: #ffffff;
+    background: #51d466;
+    border: 1px solid #30c247;
+}
+
+.mb4 {
+    color: green;
+    font-size:15px;
+}
+.mb7{
+    font-size:20px;
+    color: green;
+    text-align: center;
+}
+
+.mb8{
+    color: #fda638;
+    text-align: center;
+    font-size: 30px;
+}
+
+.carousel-inner > .item1 {
+    height: 220px;
+    background-color: #b30b0b;
+}
+
+.carousel-inner > .item2 {
+    height: 220px;
+    background-color: #069045;
+
+}
+
+.carousel-inner > .item2 h3 {
+    font-size: 20px;
+
+}
+
+.carousel-inner > .item3 {
+    height: 220px;
+    background-color: #c8ad0d;
+}
+
+.carousel-inner > .item3 h3 {
+    font-size: 18px;
+}
+#thongke{
+    background-image: url(../images/bg_4.jpg);
+    width:auto;
+    height:100%;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+.mb9 {
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+.award{
+    margin-left: -15px;
+    margin-right: -15px;
+
+}
+.award h2{
+    font-size: 45px;
+    color: #1faaf1;
+}
+.award p{
+    font-size: 20px;
+    color: black;
+}
+
+/*contact-us*/
+.page-top {
+    margin-top: 30px;
+}
+
+.mb10 {
+    color: green;
+    text-align: center;
+}
+
+.page-top {
+    margin-top: 15px;
+    color: green;
+}
+
+.button {
+    padding: 10px 20px;
+    border: 1px solid #eaeaea;
+    background: #43af50;
+    color: #fff;
+}
+
+.button-cancel {
+    padding: 10px 20px;
+    border: 1px solid #eaeaea;
+    background: #d43f3a;
+    color: #fff;
+}
+
+#social {
+    list-style-type: none;
+    text-align: center;
+}
+
+#social li {
+    display: inline-block;
+    margin-left: -11px;
+    margin-right: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#social .fab {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: green;
+    -webkit-transition: all 0.05s ease-in-out;
+    transition: all 0.05s ease-in-out;
+    font-size: 1.4em;
+}
+
+.gal{
+    padding:0;
+}
+/*about-us*/
+.mb1{
+    color: green;
+    text-align: center;
+    font-size: 15px;
+}
+.mb2{
+    color: #fda638;
+    text-align: center;
+    font-size: 30px;
+}
+
+.mb3 {
+    color: green;
+}
+.mb5 {
+    color: green;
+    text-align: center;
+}
+.mb6 {
+    color: green;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.aboutusfont {
+    font-size: 18px;
+    line-height: 1.39;
+    text-align: justify;
+
+}
+
+.aboutussizer {
+    padding: 5px 20px 5px 20px;
+    text-align: justify;
+
+}
+
+.gach {
+    margin-left: 35%;
+    margin-right: 35%;
+    width: 30%;
+    border: 1px solid green;
+}

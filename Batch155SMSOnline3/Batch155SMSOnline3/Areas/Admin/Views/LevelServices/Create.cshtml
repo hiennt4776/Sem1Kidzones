@@ -1,0 +1,84 @@
+﻿@model Batch155SMSOnline3.Models.LevelService
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/_LayoutDashboard.cshtml";
+
+    int iduser = (int)ViewBag.cusID;
+}
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    <script src="~/Scripts/formValidate/levelService.js"></script>
+}
+
+<div class="page-wrapper">
+
+    <!-- Page body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+
+                    <div class="card-header">
+                        <h5>Create a new <i>Level</i>.</h5>
+                        <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                    </div>
+
+                    <div class="card-block">
+
+                        @using (Html.BeginForm("Create", "LevelServices", FormMethod.Post, new { id = "frmCreateLevel" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <h4>LevelService</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">@Html.LabelFor(model => model.LevelName)</label>
+                                    <div class="col-sm-10">
+
+                                        @Html.TextBoxFor(model => model.LevelName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LevelName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">@Html.LabelFor(model => model.TimeServerMonth)</label>
+                                    <div class="col-sm-10">
+
+                                        @Html.TextBoxFor(model => model.TimeServerMonth, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TimeServerMonth, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                @Html.Hidden("IdUser", iduser)
+
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

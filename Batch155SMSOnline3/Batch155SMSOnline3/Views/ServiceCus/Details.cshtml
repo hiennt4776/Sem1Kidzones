@@ -1,0 +1,309 @@
+﻿<!--=================Trang detail cho tất cả các service .================= -->
+
+
+
+@model Batch155SMSOnline3.Models.Service
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
+    decimal y = Model.Price.Value;
+}
+
+
+<section class="hero-area bg_img" data-background="~/Content/SMS/assets/images/page-header.jpg">
+    <div class="container">
+        <h1 class="title m-0"> @Model.ServiceName</h1>
+    </div>
+</section>
+
+<!--=================Bulk Sms================= -->
+<section class="bulk-sms mask-sms padding-top">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="bulk-thumb">
+                    <img src="~/Content/SMS/assets/images/bulk/bulk02.png" alt="bulk">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bulk-content text-center text-sm-left">
+                    <span>services Benefits</span>
+                    <h2 class="title">what's Benefits @Model.ServiceName</h2>
+                    <p>
+                        Mauris iaculis pede, tellus commodo justo. Ligula in tortmris libero lectus libero aliquet,
+                        vestibulum aut nullloret ac sictus, id pede quis quisque lacinia consectetuer. uere eros
+                        velit eu nec arcu, repellat urna ad odio nunc. Pharetra massa mauris aliquet posuere magna
+                        ligula, pellentesque molestie et, maecenas ultricies, conubia aliquam mauris
+                    </p>
+                    <ul class="bullet-list">
+                        <li>
+                            Vestibulum id rhoncus tempus
+                        </li>
+                        <li>
+                            Tellus fermentum a aenean
+                        </li>
+                        <li>
+                            Pulvinar cursus imperdiet
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=================Bulk Sms================= -->
+<!--=================Bulk Sms================= -->
+<section class="bulk-sms padding-top">
+    <div class="container">
+        <div class="row flex-wrap-reverse align-items-center">
+            <div class="col-lg-6">
+                <div class="bulk-content text-center text-sm-left">
+                    <!--<span>wellcome to bulk sms</span>
+                    <h2 class="title">grobal Bulk SMS Service company</h2>-->
+                    <p>
+                        Mauris iaculis pede, tellus commodo justo. Ligula in tortmris libero lectus libero
+                        aliquet, vestibulum aut nullloret ac sictus, id pede quis quisque lacinia consectetuer.
+                        uere eros velit eu nec arcu, repellat urna ad odio nunc. Doletiarcu eginrdum tiunt
+                        morbi, aenean dui amet at mapro Sed quis nunc est justo, in in, elit lorem vulputate,
+                        suspendisse pellentesque pede tpluptatem ut mattis, eros diam litora nullam. Ac cras,
+                        mollis quis maecenas urna ullamper eros.
+                    </p>
+                    <a href="@Url.Action("Create", "Payment", new { id = Model.Id })" class="custom-button active">Register service now!</a>
+                    @*<div class="card">
+                            <div class="card-block">
+                                <a href="@Url.Action("Create", "Payment", new { id = Model.Id })" class="btn waves-effect waves-light btn-success btn-outline-success">
+                                    <i class="icofont icofont-check-circled"></i>
+                                    <span>
+                                        <strong>Register service now!</strong>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bulk-thumb">
+                    <img src="~/Content/SMS/assets/images/bulk/bulk01.png" alt="bulk">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=================Bulk Sms================= -->
+<!--=================Our Feature================= -->
+<section class="feature-section padding-top padding-bottom">
+    <div class="container">
+        <div class="section-header">
+            <span class="cate">our feature</span>
+            <h2 class="title">@Model.ServiceName feature</h2>
+        </div>
+        <div class="feature-section-wrapper">
+            <div class="feature-area">
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="flaticon-customer-service"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5 class="title">100% SMS Delivery</h5>
+                        <p>
+                            Amet mus venenatis dictucator amet, amet amet eget semi.
+                            driving ptingoum.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="flaticon-newspaper"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5 class="title">Unlimited Validity</h5>
+                        <p>
+                            Amet mus venenatis dictucator amet, amet amet eget semi.
+                            driving ptingoum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-area">
+                <img src="~/Content/SMS/assets/images/feature/feature01.png" alt="feature">
+            </div>
+            <div class="feature-area">
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="flaticon-money"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5 class="title">lowest cost</h5>
+                        <p>
+                            Amet mus venenatis dictucator amet, amet amet eget semi.
+                            driving ptingoum.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">
+                        <i class="flaticon-newspaper-1"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5 class="title">Delivery report</h5>
+                        <p>
+                            Amet mus venenatis dictucator amet, amet amet eget semi.
+                            driving ptingoum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=================Our Feature================= -->
+@*
+
+    <section class="service-section padding-bottom padding-top">
+        <div class="container">
+            <div class="section-header">
+                <span class="cate">Hi there</span>
+                <h2 class="title">This is <i style="color:orangered"> @Model.ServiceName</i> for @Model.LevelService.LevelName</h2>
+            </div>
+            <div class="row justify-content-center mb-30-none">
+                <dl class="dl-horizontal">
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ServiceImage)
+                    </dt>
+
+                    <dd>
+                        <img src="~/@Html.DisplayFor(model => model.ServiceImage)" alt="Image loading.." style="height:100px;width:150px;" />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        @(String.Format(info, "{0:c}", y))
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LevelService.LevelName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LevelService.LevelName)
+                    </dd>
+                </dl>
+
+
+
+            </div>
+
+            <div class="row justify-content-end mb-30-none">
+                <div class="card">
+                    <div class="card-block">
+
+
+
+                        <a href="@Url.Action("Create", "Payment", new { id = Model.Id })" class="btn waves-effect waves-light btn-success btn-outline-success">
+                            <i class="icofont icofont-check-circled"></i>
+                            <span>
+                                <strong>Register service now!</strong>
+                            </span>
+                        </a>
+
+
+
+                        <a href="@Url.Action("Index")" class="btn waves-effect waves-light btn-inverse btn-outline-inverse">
+                            <i class="icofont icofont-exchange"></i>
+                            <span>
+                                <strong>Back to List.</strong>
+                            </span>
+                        </a>
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+*@
+
+
+
+@*
+    <div class="page-wrapper">
+    <button class="btn waves-effect waves-light btn-inverse btn-outline-inverse">
+                        <i class="icofont icofont-exchange"></i>
+                        @Html.ActionLink("Back to List.", "Index")
+                    </button>
+
+        <!--  //var link = "https://localhost:44316/" + item.ServiceImage; -->
+        <div class="page-body">
+            <!-- Basic table card start -->
+            <div class="card">
+                <div>
+                    <h4>Service</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ServiceName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ServiceName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ServiceImage)
+                        </dt>
+
+                        <dd>
+                            <img src="~/@Html.DisplayFor(model => model.ServiceImage)" alt="Image loading.." style="height:50px;width:50px;" />
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+
+                        <dd>
+                            @decimal.Parse(Html.DisplayFor(model => model.Price).ToString()).ToString("C2")
+                        </dd>
+
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.LevelService.LevelName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.LevelService.LevelName)
+                        </dd>
+
+
+
+                    </dl>
+                </div>
+                <p>
+
+                    @Html.ActionLink("Register this service", "Create", "Payment", new { id = Model.Id }, new { @class = "btn" }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+*@

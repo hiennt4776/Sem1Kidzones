@@ -1,0 +1,208 @@
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-default {
+    background-color: #e24d00;
+    border: none;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: all 0.5s;
+    font-size: 15px;
+}
+
+
+
+.container-fluid {
+    padding-right: 20px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar-brand > img {
+    width: 160px;
+    margin-top: -12px;
+    border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: greenyellow;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    color: greenyellow;
+    background-color: #e24d00;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.dropdown-menu {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 1px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: greenyellow;
+    white-space: normal;
+    background-color: #e24d00;
+    font-size: 15px;
+
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    color: white;
+    text-decoration: none;
+    background-color:orange;
+}
+
+
+.navbar-nav > li > {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    background-color: orange;
+    color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: greenyellow;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: greenyellow;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color:  greenyellow;
+}
+.navbar-default .navbar-toggle {
+    border-color: greenyellow;
+}
+.navbar-default .navbar-toggle:hover {
+    background-color: orange;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: orange;
+}
+
+
+
+.site-footer {
+    position: relative;
+    background-color: #5e5e5e;
+    clear: both;
+}
+
+.site-footer .site-info {
+
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#ztl-copyright {
+    color: #c1c1c1;
+    line-height: 20px;
+    padding: 10px 0;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.container-footer {
+    max-width: 100%;
+    padding-top: 25px;
+    width: 100%;
+}
+
+.font-footer {
+    line-height: 15px;
+}
+
+#ztl-social {
+    list-style-type: none;
+    text-align: center;
+}
+
+#ztl-social li {
+    display: inline-block;
+    padding: 0 3px;
+}
+
+#ztl-social li a{color: white;transition: transform .2s}
+#ztl-social li>a:hover{
+    color: #f5821f;
+    text-decoration: none;
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+#ztl-social .fab {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: #fff;
+    -webkit-transition: all 0.05s ease-in-out;
+    transition: all 0.05s ease-in-out;
+    font-size: 1.4em;
+}
+
+.scroll-top-wrapper {
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    text-align: center;
+    z-index: 99999999;
+    background-color: #df4600;
+    color: greenyellow;
+    width: 50px;
+    height: 48px;
+    line-height: 48px;
+    right: 30px;
+    bottom: 30px;
+    padding-top: 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.scroll-top-wrapper:hover {
+    background-color: orange;
+}
+
+.scroll-top-wrapper.show {
+    visibility: visible;
+    cursor: pointer;
+    opacity: 1.0;
+}
+
+.scroll-top-wrapper i.fa {
+    line-height: inherit;
+}
+
+body {
+    background-color: #ffedd5;
+    font-family: Sniglet;
+}

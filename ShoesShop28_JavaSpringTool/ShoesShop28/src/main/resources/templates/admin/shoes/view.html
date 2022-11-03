@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+
+		<div class="pcoded-inner-content">
+			<div class="main-body">
+				<div class="page-wrapper">
+					<div class="page-body">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="card" th:object="${shoes}">
+									<div class="card-header">
+										<h4 th:text="*{shoesType.name}"></h4>
+										<h4 th:text="*{shoesSize.sizeNumber}"></h4>
+									</div>
+									<div class="card-block">
+										<div class="row">
+											<div class="col-6">
+												<div>
+													<h6>Shoes Type</h6>
+													<p th:text="*{shoesType.name}"></p>
+												</div>
+												<div>
+													<h6>Shoes Size</h6>
+													<p th:text="*{shoesSize.sizeNumber}"></p>
+												</div>
+												<div>
+													<h6>Quantity:</h6>
+													<p th:text="*{quantity}"></p>
+												</div>
+												
+												<div>
+													<h6>Status:</h6>
+													<p th:text="*{status}"></p>
+												</div>
+
+											</div>
+
+
+											<div class="col-6">
+												<div>
+													<h6>Employee</h6>
+													<p th:text="*{employee.username}"></p>
+												</div>
+												<div>
+													<h6>Created date:</h6>
+													<p th:text="*{createdDate}"></p>
+												</div>
+													<div>
+													<h6>Updated date:</h6>
+													<p th:text="*{updatedDate}"></p>
+												</div>
+											</div>
+
+											
+
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>

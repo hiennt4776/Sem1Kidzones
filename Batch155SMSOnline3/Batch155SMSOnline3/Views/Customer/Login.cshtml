@@ -1,0 +1,125 @@
+﻿@model Batch155SMSOnline3.Models.Customer
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+
+<!-- =============Hero Area============= -->
+<section class="hero-area bg_img" data-background="../../Content/SMS/assets/images/page-header.jpg">
+    <div class="container">
+        <h1 class="title m-0">my account</h1>
+    </div>
+</section>
+<div class="breadcrumb-section">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                sign-in
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- =============Hero Area============= -->
+<!--=================Account Section================= -->
+<section class="account-section padding-top padding-bottom bg_img bg_right_bottom"
+         data-background="../../Content/SMS/assets/images/account/account-bg.png">
+    <div class="container">
+        <div class="account-wrapper">
+            <div class="account-area">
+                <h3 class="account-title">LOGIN</h3>
+
+
+                @using (Html.BeginForm("Login", "Customer", FormMethod.Post, new { @class = "sign-in-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    
+   
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label class = "control-label">Username</label>
+                            <input type="text" name="username" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input type="password" name="password" class="form-control">
+
+
+                        </div>
+
+                        <div class="form-group">
+                           
+                             <input type="submit" value="Login Account" />
+                          
+                        </div>
+                   
+                }
+
+                <div class="forget-pass-group d-flex flex-wrap justify-content-between">
+                    <div class="forget-pass">
+                        <p>   <a href="@Url.Action("ForgotPassword","Customer")">Forgot Password</a></p>
+                    </div>
+                    <div class="no-account">
+                        <p>Have Not Account in Here? <a href="@Url.Action("Register","Customer")">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=================Account Section================= -->
+<!--=================Sponsor Section================= -->
+<div class="sponsor-section padding-top padding-bottom">
+    <div class="container">
+        <div class="sponsor-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor01.png" alt="sponsor">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor02.png" alt="sponsor">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor03.png" alt="sponsor">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor04.png" alt="sponsor">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor05.png" alt="sponsor">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor06.png" alt="sponsor">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor07.png" alt="sponsor">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sponsor-thumb">
+                        <img src="~/Content/SMS/assets/images/sponsor/sponsor08.png" alt="sponsor">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=================Sponsor Section================= -->

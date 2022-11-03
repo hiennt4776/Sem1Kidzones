@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+  	<head>
+  	
+  	</head>
+	<body>
+
+     	<div class="page-wrapper" layout:fragment="content">
+           <div class="col mt-4">
+              <form action="/admin/shoesTypes/saveOrUpdate" method="post" 
+	             	enctype="multipart/form-data" th:object="${shoesType}">
+                <div class="card">
+                  <div class="card-header">
+                      <h2 th:text="${shoesType.isEdit ? 'Edit Shoes Type' : 'Add New Shoes Type'}"></h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-7">
+                           <!-- b4-form-input-text -->
+                     
+						  <div class="form-group">
+                                <label for="shoesTypeId">Shoes Type ID:</label>
+                                <input type="hidden" th:field="*{isEdit}">
+                                <input type="text" class="form-control" th:field="*{shoesTypeId}"
+                                    aria-describedby="shoesTypeIdHid" placeholder="Shoes Type Id" readonly>
+                                <small th:if="${#fields.hasErrors('shoesTypeId')}" id="shoesTypeIdHid" class="form-text text-muted">Shoes Type id is required</small>
+                            </div>
+												
+			             
+                         <div class="form-group">
+			             	<label for="name">Name</label>
+			                <input type="text" class="form-control" name="name" id="name" 
+			                 th:field="*{name}"
+			                 aria-describedby="nameHid" placeholder="Name">
+			              
+			                	<small
+										th:if="${#fields.hasErrors('name')}" id="nameHid"
+										th:class="${#fields.hasErrors('name')}? error" th:errors="*{name}"
+										style="color:red">
+									</small>
+			                                
+			             </div>
+			             
+			             <div class="form-group">
+				                <label for="Gender">Gender: </label>
+				                <label class="checkbox-inline">
+				                	<input type="radio" name="gender" value="1" th:field="*{gender}" checked> Male
+				                </label>
+				                &ensp;
+				                <label class="checkbox-inline">
+				                	<input type="radio" name="gender" value="0" th:field="*{gender}"> Female
+				                </label>
+				                             
+				          </div>
+			             
+			                   <div class="form-group">
+				                <label for="bestSeller">Best Seller? </label>
+				                <label class="checkbox-inline">
+				                	<input type="checkbox" th:field="*{bestSeller}">
+				                </label>
+				               
+				                             
+				          </div>
+			             
+					
+                    	<div class="input-group form-group">
+			             	<span class="input-group-text">Unit Price</span>
+			                <input type="text" name="unitPrice" id="unitPrice" th:field="*{unitPrice}" 
+			                 class="form-control" placeholder="Unit Price">
+			                <span class="input-group-text">$</span>
+			            </div>
+			                      
+			               <div class="form-group">
+				                 <label for="brandId">Brand</label>
+				                 <select class="form-control" name="brandId" id="brandId" th:field="*{brandId}">
+				                 	<option th:each="item: ${brands}" th:value="${item.brandId}"
+				                  	th:text="${item.name}" th:selected="${item.brandId == shoesType.brandId}">Brand Name</option>
+				                  </select>
+			           		 </div>
+					         
+					         <div class="form-group">
+					              <label for="status">Status</label>
+					              <select class="form-control" name="status" id="status" th:field="*{status}">
+					              		<option value="Stocking">Stocking</option>
+					                    <option value="Out of stock">Out of stock</option>
+					                    <option value="Stop Business">Stop Business</option>
+					                    
+					            	</select>
+					         </div>      
+			           
+                        
+
+                      </div>
+                      <div class="col-3">
+                        <!-- b4-image-default 
+                        	
+                        	<script>
+                        		function chooseFile(fileInput){
+                        			if(fileInput.files && fileInput.files[0]){
+                        				var reader = new FileReader();
+                        				reader.onload = function(e){
+                        					$('#image').attr('src', e.target.result);
+                        				}
+                        				reader.readAsDataURL(fileInput.files[0]);
+                        			}
+                        		}
+                        	</script>
+                        
+                   			<img id="image" 
+	                   			th:src="${shoesType.image!=null? '/admin/shoesTypes/images/' + shoesType.image : 'images/noimage.png'}" 
+	                   			width="90%" class="img-fluid" alt="">
+					        <div class="form-group">
+					        	<label for="shoesTypeImage">Image File</label>
+					            <input type="file" onChange="chooseFile(this)" class="form-control-file" name="imageFile" id="shoesTypeImage" 
+					             placeholder="Shoes Type Image" aria-describedby="shoesTypeImage">
+					                <small id="imageHid" class="form-text text-muted">Shoes Type is required</small>
+					          
+					        </div>
+					        
+					      
+					         
+					         
+					         -->	
+                        	<script>
+                        		function chooseFile(fileInput){
+                        			if(fileInput.files && fileInput.files[0]){
+                        				var reader = new FileReader();
+                        				reader.onload = function(e){
+                        					$('#image').attr('src', e.target.result);
+                        				}
+                        				reader.readAsDataURL(fileInput.files[0]);
+                        			}
+                        		}
+                        	</script>
+                        
+                   			<img id="image" 
+	                   			th:src="${shoesType.image!=null? '/admin/shoesTypes/images/' + shoesType.image : 'images/noimage.png'}" 
+	                   			width="90%" class="img-fluid" alt="">
+					        <div class="form-group">
+					        	<label for="shoesTypeImage">Image File</label>
+					            <input type="file" onChange="chooseFile(this)" class="form-control-file" name="imageFile" id="shoesTypeImage" 
+					             placeholder="Shoes Type Image" aria-describedby="shoesTypeImage">
+					            <small id="shoesTypeImage" class="form-text text-muted">Shoes Type Image is required</small>
+					        </div>
+					        
+                     </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="description">Description</label>
+                             <textarea class="form-control" name="description" th:field="*{description}" id="description" rows="5" ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-muted">
+                    <a th:href="@{/admin/shoesTypes/add}" class="btn btn-success">New</a>
+                    <button class="btn btn-primary" th:text="${shoesType.isEdit? 'Update' : 'Save'}">Save</button>
+                    <a th:if="${shoesType.isEdit}" th:href="@{'/admin/shoesTypes/delete/' + ${shoesType.shoesTypeId}}" class="btn btn-danger float-right">Delete</a>
+             
+             
+                  </div>
+           
+                </div>
+              </form>
+               
+               
+            </div>
+ 
+	 
+  		
+  		</div>
+ 
+      
+	</body>
+</html>

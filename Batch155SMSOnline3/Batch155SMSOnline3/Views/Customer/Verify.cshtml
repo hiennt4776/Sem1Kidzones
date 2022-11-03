@@ -1,0 +1,87 @@
+﻿@model Batch155SMSOnline3.Models.Customer
+@{
+    ViewBag.Title = "Verify";
+    Layout = "~/Views/Shared/_LayoutSMS2.cshtml";
+}
+
+<section>
+    <div class="container">
+        @using (Html.BeginForm("Verify", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+
+            <hr />
+
+            <h4>Verify</h4>
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            @Html.HiddenFor(model => model.Username)
+
+            @Html.HiddenFor(model => model.Password)
+
+            @Html.HiddenFor(model => model.DateOfRegistration)
+
+            @Html.HiddenFor(model => model.PhoneNumber)
+
+            @Html.HiddenFor(model => model.Email)
+
+            @Html.HiddenFor(model => model.CustomerName)
+
+            @Html.HiddenFor(model => model.Gender)
+
+            @Html.HiddenFor(model => model.DateOfBirth)
+
+            @Html.HiddenFor(model => model.Address)
+
+            @Html.HiddenFor(model => model.Image)
+
+            @Html.HiddenFor(model => model.MaritalStatusId)
+
+            @Html.HiddenFor(model => model.Hobbies)
+
+            @Html.HiddenFor(model => model.Likes)
+
+            @Html.HiddenFor(model => model.Dislike)
+
+            @Html.HiddenFor(model => model.Cuisines)
+
+            @Html.HiddenFor(model => model.Sports)
+
+            @Html.HiddenFor(model => model.Qualification)
+
+
+            @Html.HiddenFor(model => model.School)
+
+            @Html.HiddenFor(model => model.College)
+
+            @Html.HiddenFor(model => model.WorkStatus)
+
+            @Html.HiddenFor(model => model.Organization)
+
+            @Html.HiddenFor(model => model.Designation)
+
+            @Html.HiddenFor(model => model.SpeedSMSAPI)
+            @Html.HiddenFor(model => model.deviceID)
+
+            <label>Input verify code</label>
+            <div class="col-md-offset-2 col-md-3">
+                <input type="text" name="verifycode" class="form-control">
+            </div>
+            <div>@ViewBag.Respond</div>
+            <br />
+            <div class="col-md-offset-2 col-md-2">
+                <input type="submit" value="Verify" class="btn btn-default" />
+            </div>
+            <br />
+
+
+        }
+    </div>
+</section>
+
+

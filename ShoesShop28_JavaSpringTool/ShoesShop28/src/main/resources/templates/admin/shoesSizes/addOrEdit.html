@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+  	<head>
+  	
+  	</head>
+	<body>
+
+     		<div class="page-wrapper" layout:fragment="content">
+            <div class="col-6 offset-3 mt-4">
+                 <form th:action="@{/admin/shoesSizes/saveOrUpdate}" method="post" th:object="${shoesSize}">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Add New shoes size</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="shoesSizeId">Shoes Size ID:</label>
+                                <input type="hidden" th:field="*{isEdit}">
+                                <input type="text" class="form-control" th:field="*{shoesSizeId}"
+                                    aria-describedby="shoesSizeIdHid" placeholder="Shoes size ID" readonly>
+                                <small th:if="${#fields.hasErrors('shoesSizeId')}" id="shoesSizeIdHid" class="form-text text-muted">Shoes size id is required</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Size Number</label>
+                                <input type="text" class="form-control" th:field="*{sizeNumber}" id="sizeNumber" 
+                                aria-describedby="sizeNumberHid" placeholder="Shoe Size">
+                                <small th:if="${#fields.hasErrors('sizeNumber')}" id="sizeNumberHid" th:class="${#fields.hasErrors('sizeNumber')}? error" th:errors="*{sizeNumber}" style="color:red"></small>
+
+                                
+                            </div>
+                            
+                              <div class="form-group">
+                                <label for="name">centimeters</label>
+                                <input type="text" class="form-control" th:field="*{centimeter}" id="centimeter" 
+                                aria-describedby="centimeterHid" placeholder="Shoe Size">
+                                <small th:if="${#fields.hasErrors('centimeter')}" id="centimeterHid"th:class="${#fields.hasErrors('centimeter')}? error" th:errors="*{centimeter}" style="color:red"></small>
+                                
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <a th:href="@{/admin/shoesSizes}" class="btn btn-success">List Sizes</a>
+                                <button class="btn btn-primary"><i class="fas fa-save"></i> 
+                                	<span th:if="${shoesSize.isEdit}">Update</span>
+                                	<span th:unless="${shoesSize.isEdit}">Save</span>
+                                </button>
+                        </div>
+    
+                    
+                    </div>
+                </form>
+            
+            </div>
+ 
+   </div>
+ 
+      
+	</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Material Able bootstrap admin template by Codedthemes</title>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+      <meta name="author" content="Codedthemes" />
+      <!-- Favicon icon -->
+
+      <link rel="icon" href="/adasserts/images/favicon.ico" type="image/x-icon">
+      <!-- Google font-->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+      <!-- Required Fremwork -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/css/bootstrap/css/bootstrap.min.css">
+      <!-- waves.css -->
+      <link rel="stylesheet" href="/adasserts/pages/waves/css/waves.min.css" type="text/css" media="all">
+      <!-- themify-icons line icon -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/icon/themify-icons/themify-icons.css">
+      <!-- ico font -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/icon/icofont/css/icofont.css">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/icon/font-awesome/css/font-awesome.min.css">
+      <!-- Style.css -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/css/style.css">
+      
+      <style>
+        .error{
+            padding-top: 5px;
+            font-size: 20px;
+            color: red;
+        }
+        input{
+            display: block;
+        }
+    </style>
+  </head>
+
+  <body themebg-pattern="theme1">
+  <!-- Pre-loader start -->
+  <div class="theme-loader">
+      <div class="loader-track">
+          <div class="preloader-wrapper">
+              <div class="spinner-layer spinner-blue">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+              <div class="spinner-layer spinner-red">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+
+              <div class="spinner-layer spinner-yellow">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+
+              <div class="spinner-layer spinner-green">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Pre-loader end -->
+  <section class="login-block">
+        <!-- Container-fluid starts -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form class="md-float-material form-material" th:action="@{/saveShipment}" th:object="${shipment}" method="post" id="shipment">
+                        <div class="text-center">
+                            <img src="/adasserts/images/logo.png" alt="logo.png">
+                        </div>
+                        
+
+                        <!-- <div class="row">
+			               		
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lname">Name</label>
+                                    <input type="text" name="name" class="form-control" th:value="${session.customer_session.name}">
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="fname">Address</label>
+                                        <input type="text" name="address" class="form-control" th:value="${session.customer_session.address}">
+                                </div>
+                                
+                            </div>
+                            
+                           
+                        
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="stateprovince">State/Province</label>
+                                    <input type="text" name="province" class="form-control" placeholder="State Province">
+                                </div>
+                            </div>
+                            
+                        
+                            
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Phone">Phone Number</label>
+                                    <input type="text" name="addressLine" class="form-control" th:value="${session.customer_session.phone}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <button type="submit" onclick="submitForm();" 
+                                        	class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">
+                                        	Okay
+                                        </button>
+                                      </div>
+									  <div class="col-md-6">
+										<form th:action="@{/pay/cancel}" method="get">
+											<button type="submit" class="btn waves-effect waves-light btn-inverse btn-outline-inverse text-center m-b-20">
+												Cancel
+											</button>
+										</form>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="auth-box card">
+                            <div class="card-block">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center txt-primary">Ship to</h3>
+                                    </div>
+                                </div>
+                                <div th:if="${message != null}" class="alert alert-primary" role="alert">
+                                    <i>[[${message}]]</i>
+                                  </div>
+
+                                <div class="form-group form-primary">
+                                	<label for="name"><span style="color: red;">*</span>Name</label>
+                                    <input type="text" id="name" name="name" class="form-control" th:value="${session.customer_session.name}">
+                                    
+                                    
+                                </div>
+
+                                <div class="form-group form-primary">
+                                    <!-- <input type="text" th:field="*{phone}" th:value="${session.customer_session.phone}" class="form-control" id="exampleName">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label"><span style="color: red;">*</span>Phone number</label> -->
+                                    <label for="phone"><span style="color: red;">*</span>Phone number</label>
+                                    <input type="text" id="phone" name="phone" class="form-control" th:value="${session.customer_session.phone}">
+                                    
+                                </div>
+
+								<div class="form-group form-primary">
+                                    <!-- <input type="text" th:field="*{province}" class="form-control" id="exampleRepeatEmail">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Province</label> -->
+                                    <label for="province">State/Province</label>
+                                    <input type="text" id="province" name="province" class="form-control" placeholder="State Province">
+                                </div>
+                                
+                                <div class="form-group form-primary">
+                                    <!-- <input type="text" th:field="*{addressLine}" th:value="${session.customer_session.address}" class="form-control" id="exampleName">
+                                    <span class="form-bar"></span>
+                                    <label class="float-label"><span style="color: red;">*</span>Address</label> -->
+
+                                    <label for="addressLine"><span style="color: red;">*</span>Address</label>
+                                    <input type="addressLine" id="addressLine" name="addressLine" class="form-control" th:value="${session.customer_session.address}">
+                                </div>
+                                
+								
+                                
+                                 <div class="row m-t-30">
+                                      <div class="col-md-6">
+                                        <button type="submit" onclick="submitForm();" 
+                                        	class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">
+                                        	Okay
+                                        </button>
+                                      </div>
+									  <div class="col-md-6">
+										<form th:action="@{/pay/cancel}" method="get">
+											<button type="submit" class="btn waves-effect waves-light btn-inverse btn-outline-inverse text-center m-b-20">
+												Cancel
+											</button>
+										</form>
+                                        
+                                      </div>
+                                 </div>
+
+                                
+
+                                
+                                <hr/>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <p class="text-inverse text-left m-b-0">Thank you.</p>
+                                        <p class="text-inverse text-left"><a th:href="@{/site/home}"><b>Back to website</b></a></p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img  src="/adasserts/images/auth/Logo-small-bottom.png" alt="small-logo.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid name
+
+
+                    }-->
+    </section>
+    
+<script type="text/javascript" src="/adasserts/js/jquery/jquery.min.js "></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script type="text/javascript">
+
+    function submitForm()
+    {
+        $("#shipment").validate({
+            rules:
+                {
+                    "name":
+                        {
+                            required: true
+                        },
+					"phone":
+					{
+						required: true
+					},
+					"addressLine":
+					{
+						required: true
+					}
+                },
+            messages:
+                {
+                    "name":
+                        {
+                            required: "Vui lòng nhập"
+                        },
+					"phone":
+					{
+						required: "Vui lòng nhập"
+					},
+					"addressLine":
+					{
+						required: "Vui lòng nhập"
+					}
+                    
+                }
+        });
+    }
+</script>
+<script type="text/javascript" src="/adasserts/js/jquery-ui/jquery-ui.min.js "></script>
+<script type="text/javascript" src="/adasserts/js/popper.js/popper.min.js"></script>
+<script type="text/javascript" src="/adasserts/js/bootstrap/js/bootstrap.min.js "></script>
+<!-- waves js -->
+<script src="/adasserts/pages/waves/js/waves.min.js"></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="/adasserts/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="/adasserts/js/common-pages.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+﻿@model PagedList.IPagedList<Batch155SMSOnline3.Models.Service>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/_LayoutDashboard.cshtml";
+    int x = 1;
+
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+
+
+@Html.ActionLink("Create New", "Create", "Services", null, new { @class = "btn btn-success" })
+
+
+
+
+<div class="page-wrapper">
+    <!--  //var link = "https://localhost:44316/" + item.ServiceImage; -->
+    <div class="page-body">
+        <!-- Basic table card start -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Basic Table</h5>
+                <span>use class <code>table</code> inside table element</span>
+                <div class="card-header-right">
+                    <ul class="list-unstyled card-option">
+                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                        <li><i class="fa fa-minus minimize-card"></i></li>
+                        <li><i class="fa fa-refresh reload-card"></i></li>
+                        <li><i class="fa fa-trash close-card"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>@Html.DisplayNameFor(model => model.First().ServiceName)</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().ServiceImage)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().StopServices)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().LevelService.LevelName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First().User.Username)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                decimal y = item.Price.Value;
+
+                                <tr>
+                                    <th scope="row">@x</th>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ServiceName)
+                                    </td>
+                                    <td>
+                                        <img src="~/@item.ServiceImage" alt="Image loading.." style="height:50px;width:50px;" />
+                                    </td>
+                                    <td>
+                                        @(y==9999 ? "Contact us" : String.Format(info, "{0:c}", y))
+                                        @*@(String.Format(info, "{0:c}", y))*@
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StopServices)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LevelService.LevelName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.Username)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                                    </td>
+                                </tr>
+                                x++;
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6">
+                    @using (Html.BeginForm("Index", "Services", FormMethod.Get))
+                    {
+                        <p>
+                            Records of page: @Html.DropDownList("size", (List<SelectListItem>)ViewBag.size, new { @onchange = "this.form.submit();" })
+                        </p>
+                    }
+                </div>
+                <div class="col-md-6 col-lg-6 col-xs-6 col-sm-6 text-right">
+                    Page: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                </div>
+            </div>
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, size = ViewBag.currentSize }))
+
+
+            <!-- Kết thúc -->
+        </div>
+
+    </div>
+
+</div>

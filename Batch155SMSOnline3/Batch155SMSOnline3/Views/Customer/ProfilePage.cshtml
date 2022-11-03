@@ -1,0 +1,301 @@
+﻿@model Batch155SMSOnline3.Models.Customer
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+<style>
+    .profile-container {
+        padding: 20px 15%;
+        color: #626262;
+    }
+
+    .cover-img {
+        width: 100%;
+        border-radius: 6px;
+        margin-bottom: 14px;
+    }
+
+    .profile-details {
+        background: var(--bg-color);
+        padding: 20px;
+        border-radius: 4px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .pd-row {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .pd-image {
+        width: 100px;
+        margin-right: 20px;
+        border-radius: 6px;
+    }
+
+    .pd-row div h3 {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .pd-row div p {
+        font-size: 13px;
+    }
+
+    .pd-row div img {
+        width: 25px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+
+    .pd-right button {
+        background: #1876f2;
+        border: 0;
+        outline: 0;     
+        align-items: center;
+        color: #fff;
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+        .pd-right button img {
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .pd-right button:first-child {
+            background: #e4e6eb;
+            color: #000;
+        }
+
+    .pd-right {
+        text-align: right;
+    }
+
+        .pd-right a {
+            background: #e4e6eb;
+            border-radius: 3px;
+            padding: 12px;
+            display: inline-flex;
+            margin-top: 30px;
+        }
+
+            .pd-right a img {
+                width: 20px;
+            }
+
+    .profile-info {
+        display: flex;
+        align-self: flex-start;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .info-col {
+        flex-basis: 33%;
+    }
+
+    .post-col {
+        flex-basis: 65%;
+    }
+
+    .profile-intro {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+    }
+
+        .profile-intro h3 {
+            font-weight: 600;
+        }
+
+    .intro-text {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 15px;
+    }
+
+        .intro-text img {
+            width: 15px;
+            margin-bottom: -3px;
+        }
+
+    .profile-intro hr {
+        border: 0;
+        height: 1px;
+        background: #ccc;
+        margin: 24px 0;
+    }
+
+    .profile-intro ul li {
+        list-style: none;
+        font-size: 15px;
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+    }
+
+        .profile-intro ul li img {
+            width: 26px;
+            margin-right: 10px;
+        }
+
+    .title-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        .title-box a {
+            text-decoration: none;
+            color: #1876f2;
+            font-size: 14px;
+        }
+
+    .photo-box {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-gap: 10px;
+        margin-top: 15px;
+    }
+
+        .photo-box div img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+    .profile-intro p {
+        font-size: 14px;
+    }
+
+    .friends-box {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-gap: 10px;
+        margin-top: 15px;
+    }
+
+        .friends-box div img {
+            width: 100%;
+            cursor: pointer;
+            padding-bottom: 20px;
+        }
+
+        .friends-box div {
+            position: relative;
+        }
+
+        .friends-box p {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+</style>
+
+<section class="hero-area bg_img" data-background="../../Content/SMS/assets/images/page-header.jpg">
+    <div class="container">
+        <h1 class="title m-0">Profile</h1>
+    </div>
+</section>
+
+<div class="profile-container">
+
+    <div class="profile-details">
+
+        <div class="pd-row">
+
+
+            <img src='@Url.Content("~/"+Model.Image)' class="pd-image" />
+
+
+
+            <div>
+                <h3>@Model.CustomerName</h3>
+                <p>@ViewBag.CountFriend Friends</p>
+            
+                @Html.Action("FriendsListMiniPartial", "Customer", new { id = Model.Id })
+
+            </div>
+        </div>
+
+        <div class="pd-right">
+            <br />
+            @if (Model.Id != int.Parse(User.Identity.Name))
+            {
+                <button onclick="location.href='@Url.Action("MessageFriends", "Message", new { IdReceive = Model.Id })'"><img src="~/Content/images/message.png" />Messages</button>
+
+            }
+            else
+            {
+                <button onclick="location.href='@Url.Action("UpdateProfile", "Customer")'">Update Profile</button>
+            }
+
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <div class="profile-intro">
+                        <h3>Intro</h3>
+
+                        <ul>
+                            @if (Model.Gender == true)
+                            {
+                                <li><img src="~/Content/images/Male.png">Gender: Male</li>
+                            }
+                            else
+                            {
+                                <li><img src="~/Content/images/Female.png">Gender: Female</li>
+                            }
+
+                            <li><img src="~/Content/images/email.png">Email: @Html.DisplayFor(model => model.Email)</li>
+                            <li><img src="~/Content/images/phone.png">Phone Number: @Html.DisplayFor(model => model.PhoneNumber)</li>
+                            <li><img src="~/Content/images/dateofbirth.png">Birthday: @Url.Content(String.Format("{0:MM/dd/yyyy}", Model.DateOfBirth))</li>
+                            <li><img src="~/Content/images/Address.png">Address:  @Html.DisplayFor(model => model.Address)</li>
+                            <li><img src="~/Content/images/Married.png">Marital Status:  @Html.DisplayFor(model => model.MaritalStatu.MaritalStatusName)</li>
+                            <li><img src="~/Content/images/Hobbies.png">Hobbies: @Html.DisplayFor(model => model.Hobbies)</li>
+                            <li><img src="~/Content/images/like.png">Like: @Html.DisplayFor(model => model.Likes)</li>
+                            <li><img src="~/Content/images/dislike.png">Dislike: @Html.DisplayFor(model => model.Dislike)</li>
+                            <li><img src="~/Content/images/cuisine.png">Cuisine: @Html.DisplayFor(model => model.Cuisines)</li>
+                            <li><img src="~/Content/images/sport.png">Sport:  @Html.DisplayFor(model => model.Sports)</li>
+                            <li><img src="~/Content/images/Qualification.png">Qualification:  @Html.DisplayFor(model => model.Qualification)</li>
+                            <li><img src="~/Content/images/school.png">School: @Html.DisplayFor(model => model.School)</li>
+                            <li><img src="~/Content/images/College.png">College: @Html.DisplayFor(model => model.College)</li>
+                            <li><img src="~/Content/images/WorkStatus.png">Work Status: @Html.DisplayFor(model => model.WorkStatu.WorkStatusName)</li>
+                            <li><img src="~/Content/images/Organization.png">Organization: @Html.DisplayFor(model => model.Organization)</li>
+                            <li><img src="~/Content/images/Designation.png">Designation: @Html.DisplayFor(model => model.Designation)</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-8">
+                    <div class="profile-intro">
+
+                        <div class="title-box">
+                            <h3>Friends</h3>
+                            <a href='@Url.Action("ListFriends","Customer", new { id = Model.Id})'>All Freinds</a>
+                          
+                        </div>
+
+                        <p>@ViewBag.CountFriend Friends</p>
+
+                           @Html.Action("FriendsListPartial", "Customer", new { id = Model.Id})
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</div>

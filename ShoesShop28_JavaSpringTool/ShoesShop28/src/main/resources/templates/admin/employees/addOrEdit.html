@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+
+	<div class="page-wrapper" layout:fragment="content">
+		<form th:action="@{/admin/employees/saveOrUpdate}" method="post"
+				th:object="${employee}">
+				<div class="card">
+					<div class="card-header">
+						<h2>Add New Employee</h2>
+						
+							<div th:if="@{message != null}">
+									 <div class="col-xs-12 col-sm-6 col-md-8">
+										<i>[[${message}]]</i>
+									 </div>
+									
+							</div>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="employeeId">Employee ID:</label> <input type="hidden"
+										th:field="*{isEdit}"> <input type="text"
+										class="form-control" th:field="*{employeeId}"
+										aria-describedby="employeeIdHid" placeholder="Employee ID"
+										readonly> <small
+										th:if="${#fields.hasErrors('employeeId')}" id="employeeIdHid"
+										class="form-text text-muted">Employee Id is required</small>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="username">Username</label> <input type="text"
+										class="form-control" th:field="*{username}" id="username"
+										aria-describedby="usernameHid" placeholder="username"> 
+									<small
+										th:if="${#fields.hasErrors('username')}" id="usernameHid"
+										th:class="${#fields.hasErrors('username')}? error" th:errors="*{username}"
+										style="color:red">
+									</small>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group" th:unless="${employee.isEdit}" >
+									<label for="name">Password</label> 
+									<input type="password"
+										class="form-control" th:field="*{password}" id="password"
+										aria-describedby="passwordHid" placeholder="Password"> 
+									<small
+										th:if="${#fields.hasErrors('password')}" id="passwordHid"
+										th:class="${#fields.hasErrors('password')}? error" th:errors="*{password}"
+										style="color:red">
+									</small>
+								</div>
+						
+								<div class="form-group" th:if="${employee.isEdit}">
+									<input type="hidden"
+										class="form-control" th:field="*{password}" id="password"
+										aria-describedby="passwordHid" placeholder="Password"> 					
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Full Name</label> <input type="text"
+										class="form-control" th:field="*{name}" id="name"
+										aria-describedby="nameHid" placeholder="Full Name"> 
+									<small
+										th:if="${#fields.hasErrors('name')}" id="nameHid"
+										th:class="${#fields.hasErrors('name')}? error" th:errors="*{name}"
+										style="color:red">
+									</small>
+								</div>
+							</div>
+							
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="Gender">Gender: </label> 
+									<br />
+									<label class="checkbox-inline"> 
+										<input type="radio" name="gender" value="1" th:field="*{gender}" checked> Male
+									</label> 
+										&ensp; 
+									<label class="checkbox-inline"> <input type="radio" name="gender" value="0" th:field="*{gender}"> Female
+									</label>
+								</div>
+							</div>
+						
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Identity Card</label> 
+									<input type="text" class="form-control" th:field="*{identityCard}" id="identityCard" aria-describedby="identityCardHid" placeholder="Identity Card 12 digits"> 
+									<small 
+										th:if="${#fields.hasErrors('identityCard')}" id="identityCardHid"
+										th:class="${#fields.hasErrors('identityCard')}? error" th:errors="*{identityCard}"
+										style="color:red">
+									</small>
+		
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Email</label> 
+										<input type="text" class="form-control" th:field="*{email}" id="email" aria-describedby="emailHid" placeholder="Email"> 
+										<small
+											th:if="${#fields.hasErrors('email')}" id="emailHid"
+											th:class="${#fields.hasErrors('email')}? error" th:errors="*{email}"
+											style="color:red">
+										</small>
+								</div>
+							</div>
+							
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Phone</label> 
+									<input type="text" class="form-control" th:field="*{phone}" id="phone" placeholder="0xxxxxxxxx or +84xxxxxxxxx" aria-describedby="phoneHid"> 
+									<small
+										th:if="${#fields.hasErrors('phone')}" id="phoneHid"
+										th:class="${#fields.hasErrors('phone')}? error" th:errors="*{phone}"
+										style="color:red">
+									</small>
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								 <div class="form-group">
+		                                <label for="name">Date Of Birth</label>
+		                                <input type="date" class="form-control" th:field="*{dateOfBirth}" id="dateOfBirth" name="dateOfBirth">
+			                         	<small
+											th:if="${#fields.hasErrors('dateOfBirth')}" id="dateOfBirthHid"
+											th:class="${#fields.hasErrors('dateOfBirth')}? error" th:errors="*{dateOfBirth}"
+											style="color:red">
+										</small>
+		                         </div>
+                          	</div>
+
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="status">Status</label> <select class="form-control"
+										name="status" id="status" th:field="*{status}">
+										<option value="Working">Working</option>
+										<option value="Retired">Retired</option>
+		
+									</select>
+								</div>
+							</div>
+							
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="role">Role</label> 
+									<select class="form-control"
+										name="role" id="role" th:field="*{role}">
+										<option value="admin">Admin</option>
+										<option value="employee">Employee</option>
+		
+									</select>
+								</div>
+							</div>
+							
+							
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Address</label>
+									<textarea class="form-control" th:field="*{address}" id="address"
+										aria-describedby="addressHid" placeholder="Address">
+		                            </textarea>
+									<small
+										th:if="${#fields.hasErrors('address')}" id="addressHid"
+										th:class="${#fields.hasErrors('address')}? error" th:errors="*{address}"
+										style="color:red">
+									</small>
+								</div>
+							</div>
+						
+
+					</div>
+					<div class="card-footer text-muted">
+						<button type="reset" class="btn btn-secondary">Reset</button>
+						<a th:href="@{/admin/employees}" class="btn btn-success">List
+							Sizes</a>
+						<button class="btn btn-primary">
+							<i class="fas fa-save"></i> 
+							<span th:if="${employee.isEdit}">Update</span>
+							<span th:unless="${employee.isEdit}">Save</span>
+						</button>
+					</div>
+
+
+				</div>
+			
+				</div>
+			</form>
+
+		</div>
+</body>
+</html>

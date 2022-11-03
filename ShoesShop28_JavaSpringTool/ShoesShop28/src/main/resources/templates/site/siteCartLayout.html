@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+    <head>
+        <title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+        
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="/site/css/animate.css" >
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="/site/css/icomoon.css">
+        <!-- Ion Icon Fonts-->
+        <link rel="stylesheet" href="/site/css/ionicons.min.css">
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="/site/css/bootstrap.min.css">
+
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="/site/css/magnific-popup.css">
+
+        <!-- Flexslider  -->
+        <link rel="stylesheet" href="/site/css/flexslider.css">
+
+        <!-- Owl Carousel -->
+        <link rel="stylesheet" href="/site/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/site/css/owl.theme.default.min.css">
+        
+        <!-- Date Picker -->
+        <link rel="stylesheet" href="/site/css/bootstrap-datepicker.css">
+        <!-- Flaticons  -->
+        <link rel="stylesheet" href="/site/fonts/flaticon/font/flaticon.css">
+
+        <!-- Theme style  -->
+        <link rel="stylesheet" href="/site/css/style.css">
+
+	</head>
+
+	<body>
+		
+	<div class="colorlib-loader"></div>
+
+	<div id="page">
+		<!-- navHeader -->
+        <div th:replace="site/fragments/navHeader:: navHeader" ></div>
+
+        <!-- content -->
+        <div layout:fragment="content" ></div>
+						
+
+        <!-- footer -->
+        <div th:replace="site/fragments/footer:: footer" ></div>
+		
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="/site/js/jquery.min.js"></script>
+   <!-- popper -->
+   <script src="/site/js/popper.min.js"></script>
+   <!-- bootstrap 4.1 -->
+   <script src="/site/js/bootstrap.min.js"></script>
+   <!-- jQuery easing -->
+   <script src="/site/js/jquery.easing.1.3.js"></script>
+	<!-- Waypoints -->
+	<script src="/site/js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="/site/js/jquery.flexslider-min.js"></script>
+	<!-- Owl carousel -->
+	<script src="/site/js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="/site/js/jquery.magnific-popup.min.js"></script>
+	<script src="/site/js/magnific-popup-options.js"></script>
+	<!-- Date Picker -->
+	<script src="/site/js/bootstrap-datepicker.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="/site/js/jquery.stellar.min.js"></script>
+	<!-- Main -->
+	<script src="/site/js/main.js"></script>
+	<script>
+		$(document).ready(function(){
+			var quantitiy=0;
+			$('.quantity-right-plus').click(function(e){
+				// Stop acting like a button
+				e.preventDefault();
+				// Get the field name
+				var quantity = parseInt($('#quantity').val());
+				// If is not undefined
+				$('#quantity').val(quantity + 1);//
+				Increment
+			});
+			$('.quantity-left-minus').click(function(e){
+				// Stop acting like a button
+				e.preventDefault();
+				// Get the field name
+				var quantity = parseInt($('#quantity').val());
+				// If is not undefined
+				// Increment
+				if(quantity>0){
+					$('#quantity').val(quantity - 1);
+					}
+				});				
+			});
+	</script>
+
+	</body>
+</html>
+

@@ -1,0 +1,869 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D613C080-BF9D-4E8F-8EBE-6609368AD33B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Batch155SMSOnline3</RootNamespace>
+    <AssemblyName>Batch155SMSOnline3</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44316</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LevelServicesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\ServiceCusController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Active.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbModelSMS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbModelSMS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbModelSMS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbModelSMS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbModelSMS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Friend.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LevelService.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ManagementProvider.cs" />
+    <Compile Include="Models\MaritalStatu.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Service.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpeedSMSAPI.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkStatu.cs">
+      <DependentUpon>dbModelSMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Others\PayCompare.cs" />
+    <Compile Include="Others\PayLib.cs" />
+    <Compile Include="Others\Util.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeSsIon\ActiveService.cs" />
+    <Compile Include="SeSsIon\CommonConstant.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Dashboard\assets\css\animate.css\css\animate.css" />
+    <Content Include="Content\Dashboard\assets\css\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Dashboard\assets\css\chartist\chartist.css" />
+    <Content Include="Content\Dashboard\assets\css\component.css" />
+    <Content Include="Content\Dashboard\assets\css\font-awesome-n.min.css" />
+    <Content Include="Content\Dashboard\assets\css\font-awesome.min.css" />
+    <Content Include="Content\Dashboard\assets\css\ionicons.css" />
+    <Content Include="Content\Dashboard\assets\css\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\Dashboard\assets\css\linearicons.css" />
+    <Content Include="Content\Dashboard\assets\css\morris.js\css\morris.css" />
+    <Content Include="Content\Dashboard\assets\css\simple-line-icons.css" />
+    <Content Include="Content\Dashboard\assets\css\style.css" />
+    <Content Include="Content\Dashboard\assets\css\style.min.css" />
+    <Content Include="Content\Dashboard\assets\icon\fa-brands-400.svg" />
+    <Content Include="Content\Dashboard\assets\icon\fa-regular-400.svg" />
+    <Content Include="Content\Dashboard\assets\icon\fa-solid-900.svg" />
+    <Content Include="Content\Dashboard\assets\icon\feather\css\feather.css" />
+    <Content Include="Content\Dashboard\assets\icon\feather\fonts\feather.svg" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Dashboard\assets\icon\fontawesome-webfont.svg" />
+    <Content Include="Content\Dashboard\assets\icon\icofont\css\icofont.css" />
+    <Content Include="Content\Dashboard\assets\icon\ionicons.svg" />
+    <Content Include="Content\Dashboard\assets\icon\Linearicons-Free.svg" />
+    <Content Include="Content\Dashboard\assets\icon\Simple-Line-Icons.svg" />
+    <Content Include="Content\Dashboard\assets\icon\themify-icons\fonts\themify.svg" />
+    <Content Include="Content\Dashboard\assets\icon\themify-icons\themify-icons.css" />
+    <Content Include="Content\Dashboard\assets\images\auth\logo-dark.png" />
+    <Content Include="Content\Dashboard\assets\images\auth\Logo-small-bottom.png" />
+    <Content Include="Content\Dashboard\assets\images\auth\logo.png" />
+    <Content Include="Content\Dashboard\assets\images\avatar-1.jpg" />
+    <Content Include="Content\Dashboard\assets\images\avatar-2.jpg" />
+    <Content Include="Content\Dashboard\assets\images\avatar-3.jpg" />
+    <Content Include="Content\Dashboard\assets\images\avatar-4.jpg" />
+    <Content Include="Content\Dashboard\assets\images\avatar-5.jpg" />
+    <Content Include="Content\Dashboard\assets\images\breadcrumb-bg.jpg" />
+    <Content Include="Content\Dashboard\assets\images\browser\chrome.png" />
+    <Content Include="Content\Dashboard\assets\images\browser\firefox.png" />
+    <Content Include="Content\Dashboard\assets\images\browser\ie.png" />
+    <Content Include="Content\Dashboard\assets\images\browser\opera.png" />
+    <Content Include="Content\Dashboard\assets\images\browser\safari.png" />
+    <Content Include="Content\Dashboard\assets\images\favicon.ico" />
+    <Content Include="Content\Dashboard\assets\images\logo-blue.png" />
+    <Content Include="Content\Dashboard\assets\images\logo.png" />
+    <Content Include="Content\Dashboard\assets\images\mega-menu\01.jpg" />
+    <Content Include="Content\Dashboard\assets\images\mega-menu\02.jpg" />
+    <Content Include="Content\Dashboard\assets\images\mega-menu\03.jpg" />
+    <Content Include="Content\Dashboard\assets\images\select-arrow.png" />
+    <Content Include="Content\Dashboard\assets\images\user-bg.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\AUSTRALIA.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\BRAZIL.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\DIGITALPEN.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\GERMANY.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\IPAD.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\PHONE1.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\PHONE2.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\PHONE3.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\PHONE4.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\prod1.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\prod2.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\prod3.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\prod4.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\TABLET.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\UK.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\USA.jpg" />
+    <Content Include="Content\Dashboard\assets\images\widget\wather2bottom.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\wather2m.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\wather2star1.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\wather2star2.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\watherbottom.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\wathernature.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\watherstar1.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\watherstar2.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\wsm-3-star-1.png" />
+    <Content Include="Content\Dashboard\assets\images\widget\wsm-3-star-2.png" />
+    <Content Include="Content\Dashboard\assets\js\animation.js" />
+    <Content Include="Content\Dashboard\assets\js\bootstrap-growl.min.js" />
+    <Content Include="Content\Dashboard\assets\js\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Dashboard\assets\js\classie.js" />
+    <Content Include="Content\Dashboard\assets\js\color-json-common-page.js" />
+    <Content Include="Content\Dashboard\assets\js\common-pages.js" />
+    <Content Include="Content\Dashboard\assets\js\common-pages.min.js" />
+    <Content Include="Content\Dashboard\assets\js\counter.js" />
+    <Content Include="Content\Dashboard\assets\js\float\curvedLines.js" />
+    <Content Include="Content\Dashboard\assets\js\float\jquery.flot.categories.js" />
+    <Content Include="Content\Dashboard\assets\js\float\jquery.flot.js" />
+    <Content Include="Content\Dashboard\assets\js\float\jquery.flot.pie.js" />
+    <Content Include="Content\Dashboard\assets\js\float\jquery.flot.tooltip.min.js" />
+    <Content Include="Content\Dashboard\assets\js\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="Content\Dashboard\assets\js\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\Dashboard\assets\js\jquery.easypiechart.min.js" />
+    <Content Include="Content\Dashboard\assets\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Content\Dashboard\assets\js\jquery.mousewheel.min.js" />
+    <Content Include="Content\Dashboard\assets\js\jquery.quicksearch.js" />
+    <Content Include="Content\Dashboard\assets\js\jquery\jquery.min.js" />
+    <Content Include="Content\Dashboard\assets\js\modal.js" />
+    <Content Include="Content\Dashboard\assets\js\modalEffects.js" />
+    <Content Include="Content\Dashboard\assets\js\modernizr\css-scrollbars.js" />
+    <Content Include="Content\Dashboard\assets\js\modernizr\modernizr.js" />
+    <Content Include="Content\Dashboard\assets\js\morris.js\morris.js" />
+    <Content Include="Content\Dashboard\assets\js\owl-custom.js" />
+    <Content Include="Content\Dashboard\assets\js\pcoded.min.js" />
+    <Content Include="Content\Dashboard\assets\js\popper.js\popper.min.js" />
+    <Content Include="Content\Dashboard\assets\js\raphael\raphael.min.js" />
+    <Content Include="Content\Dashboard\assets\js\rating.js" />
+    <Content Include="Content\Dashboard\assets\js\script.js" />
+    <Content Include="Content\Dashboard\assets\js\script.min.js" />
+    <Content Include="Content\Dashboard\assets\js\SmoothScroll.js" />
+    <Content Include="Content\Dashboard\assets\js\swiper-custom.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\horizontal-layout.min.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\menu\box-layout.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\menu\menu-compact.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\menu\menu-header-fixed.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\menu\menu-hori-fixed.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\menu\menu-rtl.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\menu\menu-sidebar-fixed.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\menu\menu-static.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\vertical-layout.js" />
+    <Content Include="Content\Dashboard\assets\js\vertical\vertical-layout.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\accordion\accordion.js" />
+    <Content Include="Content\Dashboard\assets\pages\accordion\accordion.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\chart\morris\morris-custom-chart.js" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\css\amchart.css" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\css\export.css" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\js\amcharts.js" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\js\custom-amchart.js" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\js\export.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\js\images\dragIconRoundBig.svg" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\js\images\dragIconRoundBigH.svg" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\js\light.js" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\amchart\js\serial.js" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\custom-dashboard.js" />
+    <Content Include="Content\Dashboard\assets\pages\dashboard\custom-dashboard.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\google-maps\gmaps.js" />
+    <Content Include="Content\Dashboard\assets\pages\google-maps\google-maps.js" />
+    <Content Include="Content\Dashboard\assets\pages\icon-modal.js" />
+    <Content Include="Content\Dashboard\assets\pages\notification\notification.css" />
+    <Content Include="Content\Dashboard\assets\pages\notification\notification.js" />
+    <Content Include="Content\Dashboard\assets\pages\todo\todo.js" />
+    <Content Include="Content\Dashboard\assets\pages\waves\css\waves.min.css" />
+    <Content Include="Content\Dashboard\assets\pages\waves\js\waves.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\amcharts.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\amcharts.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\ammap.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\ammap.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\continentsLow.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\continentsLow.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\export.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\gauge.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\gauge.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\images\dragIconRoundBig.svg" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\images\lens.svg" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\light.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\light.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\pie.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\pie.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\serial.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\serial.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\usaLow.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\worldLow.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\amchart\worldLow.min.js" />
+    <Content Include="Content\Dashboard\assets\pages\widget\excanvas.js" />
+    <Content Include="Content\imageService\1200px-Magnifying_glass_icon.svg.png" />
+    <Content Include="Content\imageService\favicon.ico" />
+    <Content Include="Content\imageService\no-image-available.jpg" />
+    <Content Include="Content\imageService\operator02.png" />
+    <Content Include="Content\imageService\operator06.png" />
+    <Content Include="Content\imageService\operator07.png" />
+    <Content Include="Content\imageService\operator10.png" />
+    <Content Include="Content\imageService\service-pro04.jpg" />
+    <Content Include="Content\imageService\user-bg.jpg" />
+    <Content Include="Content\images\add-friends.png" />
+    <Content Include="Content\images\Address.png" />
+    <Content Include="Content\images\advertisement.png" />
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\college.png" />
+    <Content Include="Content\images\comments.png" />
+    <Content Include="Content\images\cover.png" />
+    <Content Include="Content\images\cuisine.png" />
+    <Content Include="Content\images\Hobbies.png" />
+    <Content Include="Content\images\dateofbirth.png" />
+    <Content Include="Content\images\Designation.png" />
+    <Content Include="Content\images\dislike.png" />
+    <Content Include="Content\images\display.png" />
+    <Content Include="Content\images\email.png" />
+    <Content Include="Content\images\feed-image-1.png" />
+    <Content Include="Content\images\feed-image-2.png" />
+    <Content Include="Content\images\feed-image-3.png" />
+    <Content Include="Content\images\feed-image-4.png" />
+    <Content Include="Content\images\feed-image-5.png" />
+    <Content Include="Content\images\feedback.png" />
+    <Content Include="Content\images\feeling.png" />
+    <Content Include="Content\images\Female.png" />
+    <Content Include="Content\images\friends.png" />
+    <Content Include="Content\images\group.png" />
+    <Content Include="Content\images\help.png" />
+    <Content Include="Content\images\inbox.png" />
+    <Content Include="Content\images\like-blue.png" />
+    <Content Include="Content\images\like.png" />
+    <Content Include="Content\images\live-video.png" />
+    <Content Include="Content\images\location.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo2.png" />
+    <Content Include="Content\images\logout.png" />
+    <Content Include="Content\images\Male.png" />
+    <Content Include="Content\images\marketplace.png" />
+    <Content Include="Content\images\Married.png" />
+    <Content Include="Content\images\member-1.png" />
+    <Content Include="Content\images\member-2.png" />
+    <Content Include="Content\images\member-3.png" />
+    <Content Include="Content\images\member-4.png" />
+    <Content Include="Content\images\member-5.png" />
+    <Content Include="Content\images\member-6.png" />
+    <Content Include="Content\images\member-7.png" />
+    <Content Include="Content\images\member-8.png" />
+    <Content Include="Content\images\member-9.png" />
+    <Content Include="Content\images\message.png" />
+    <Content Include="Content\images\more.png" />
+    <Content Include="Content\images\news.png" />
+    <Content Include="Content\images\notification.png" />
+    <Content Include="Content\images\Organization.png" />
+    <Content Include="Content\images\phone.png" />
+    <Content Include="Content\images\photo.png" />
+    <Content Include="Content\images\photo1.png" />
+    <Content Include="Content\images\photo2.png" />
+    <Content Include="Content\images\photo3.png" />
+    <Content Include="Content\images\photo4.png" />
+    <Content Include="Content\images\photo5.png" />
+    <Content Include="Content\images\photo6.png" />
+    <Content Include="Content\images\profile-home.png" />
+    <Content Include="Content\images\profile-job.png" />
+    <Content Include="Content\images\profile-location.png" />
+    <Content Include="Content\images\profile-pic.png" />
+    <Content Include="Content\images\profile-study.png" />
+    <Content Include="Content\images\profile.png" />
+    <Content Include="Content\images\Qualification.png" />
+    <Content Include="Content\images\school.png" />
+    <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\see-more.png" />
+    <Content Include="Content\images\setting.png" />
+    <Content Include="Content\images\share.png" />
+    <Content Include="Content\images\shortcut-1.png" />
+    <Content Include="Content\images\shortcut-2.png" />
+    <Content Include="Content\images\shortcut-3.png" />
+    <Content Include="Content\images\shortcut-4.png" />
+    <Content Include="Content\images\sport.png" />
+    <Content Include="Content\images\status-1.png" />
+    <Content Include="Content\images\status-2.png" />
+    <Content Include="Content\images\status-3.png" />
+    <Content Include="Content\images\status-4.png" />
+    <Content Include="Content\images\status-5.png" />
+    <Content Include="Content\images\upload.png" />
+    <Content Include="Content\images\video.png" />
+    <Content Include="Content\images\watch.png" />
+    <Content Include="Content\images\WorkStatus.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\SMS\assets\css\ajax-loader.gif" />
+    <Content Include="Content\SMS\assets\css\all.min.css" />
+    <Content Include="Content\SMS\assets\css\animate.css" />
+    <Content Include="Content\SMS\assets\css\bootstrap.min.css" />
+    <Content Include="Content\SMS\assets\css\flaticon.css" />
+    <Content Include="Content\SMS\assets\css\Flaticon.svg" />
+    <Content Include="Content\SMS\assets\css\jqvmap.min.css" />
+    <Content Include="Content\SMS\assets\css\lightcase.css" />
+    <Content Include="Content\SMS\assets\css\main.css" />
+    <Content Include="Content\SMS\assets\css\nice-select.css" />
+    <Content Include="Content\SMS\assets\css\swiper.min.css" />
+    <Content Include="Content\SMS\assets\fonts\lightcaseeead.svg" />
+    <Content Include="Content\SMS\assets\images\404.png" />
+    <Content Include="Content\SMS\assets\images\account\account-bg.png" />
+    <Content Include="Content\SMS\assets\images\banner\banner-bg01.jpg" />
+    <Content Include="Content\SMS\assets\images\banner\banner-bg01.png" />
+    <Content Include="Content\SMS\assets\images\banner\banner-bg02.jpg" />
+    <Content Include="Content\SMS\assets\images\banner\banner-shape01.png" />
+    <Content Include="Content\SMS\assets\images\blog\author.png" />
+    <Content Include="Content\SMS\assets\images\blog\blog01.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog02.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog03.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog04.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog05.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog06.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog07.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog08.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog09.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog10.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog11.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog12.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog13.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog14.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\blog15.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\comment01.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\comment02.jpg" />
+    <Content Include="Content\SMS\assets\images\blog\right-quote.png" />
+    <Content Include="Content\SMS\assets\images\bulk\bulk01.png" />
+    <Content Include="Content\SMS\assets\images\bulk\bulk02.png" />
+    <Content Include="Content\SMS\assets\images\case\case01.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case01.png" />
+    <Content Include="Content\SMS\assets\images\case\case02.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case03.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case04.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case05.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case06.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case07.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case08.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case09.jpg" />
+    <Content Include="Content\SMS\assets\images\case\case10.jpg" />
+    <Content Include="Content\SMS\assets\images\client\client02.jpg" />
+    <Content Include="Content\SMS\assets\images\client\client03.jpg" />
+    <Content Include="Content\SMS\assets\images\contact\contact-bg.png" />
+    <Content Include="Content\SMS\assets\images\favicon.png" />
+    <Content Include="Content\SMS\assets\images\feature\feature01.png" />
+    <Content Include="Content\SMS\assets\images\logo\logo01.png" />
+    <Content Include="Content\SMS\assets\images\logo\logo02.png" />
+    <Content Include="Content\SMS\assets\images\offer\offer01.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator01.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator02.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator03.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator04.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator05.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator06.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator07.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator08.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator09.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator10.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator11.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator12.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator13.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator14.png" />
+    <Content Include="Content\SMS\assets\images\operators\operator15.png" />
+    <Content Include="Content\SMS\assets\images\overview\benifit-01.png" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg01.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg02.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg03.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg04.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg05.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg06.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg07.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-bg08.jpg" />
+    <Content Include="Content\SMS\assets\images\overview\overview-map01.png" />
+    <Content Include="Content\SMS\assets\images\page-header.jpg" />
+    <Content Include="Content\SMS\assets\images\price\price-bg-shape.png" />
+    <Content Include="Content\SMS\assets\images\price\price-shape.png" />
+    <Content Include="Content\SMS\assets\images\project\project01.jpg" />
+    <Content Include="Content\SMS\assets\images\project\project02.jpg" />
+    <Content Include="Content\SMS\assets\images\project\project03.jpg" />
+    <Content Include="Content\SMS\assets\images\project\project04.jpg" />
+    <Content Include="Content\SMS\assets\images\project\project05.jpg" />
+    <Content Include="Content\SMS\assets\images\project\project06.jpg" />
+    <Content Include="Content\SMS\assets\images\rocket.png" />
+    <Content Include="Content\SMS\assets\images\service\location-based-service01.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-email01.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-pro-map.png" />
+    <Content Include="Content\SMS\assets\images\service\service-pro01.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-pro02.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-pro03.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-pro04.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-pro05.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-pro06.jpg" />
+    <Content Include="Content\SMS\assets\images\service\service-shape01.png" />
+    <Content Include="Content\SMS\assets\images\service\service-shape02.png" />
+    <Content Include="Content\SMS\assets\images\service\voice-message01.png" />
+    <Content Include="Content\SMS\assets\images\service\voice-message02.png" />
+    <Content Include="Content\SMS\assets\images\service\voice-message03.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor01.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor02.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor03.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor04.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor05.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor06.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor07.png" />
+    <Content Include="Content\SMS\assets\images\sponsor\sponsor08.png" />
+    <Content Include="Content\SMS\assets\images\testimonial\testimonial-bg.png" />
+    <Content Include="Content\SMS\assets\images\testimonial\testimonial01.png" />
+    <Content Include="Content\SMS\assets\images\testimonial\testimonial02.png" />
+    <Content Include="Content\SMS\assets\images\testimonial\testimonial03.png" />
+    <Content Include="Content\SMS\assets\images\testimonial\testimonial04.png" />
+    <Content Include="Content\SMS\assets\images\testimonial\testimonial05.png" />
+    <Content Include="Content\SMS\assets\images\testimonial\testimonial06.png" />
+    <Content Include="Content\SMS\assets\js\bootstrap.min.js" />
+    <Content Include="Content\SMS\assets\js\contact.js" />
+    <Content Include="Content\SMS\assets\js\countdown.min.js" />
+    <Content Include="Content\SMS\assets\js\counterup.min.js" />
+    <Content Include="Content\SMS\assets\js\isotope.pkgd.min.js" />
+    <Content Include="Content\SMS\assets\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\SMS\assets\js\jquery.vmap.min.js" />
+    <Content Include="Content\SMS\assets\js\jquery.vmap.world.js" />
+    <Content Include="Content\SMS\assets\js\lightcase.js" />
+    <Content Include="Content\SMS\assets\js\main.js" />
+    <Content Include="Content\SMS\assets\js\map.js" />
+    <Content Include="Content\SMS\assets\js\modernizr-3.6.0.min.js" />
+    <Content Include="Content\SMS\assets\js\nice-select.js" />
+    <Content Include="Content\SMS\assets\js\plugins.js" />
+    <Content Include="Content\SMS\assets\js\swiper.min.js" />
+    <Content Include="Content\SMS\assets\js\waypoint.js" />
+    <Content Include="Content\SMS\assets\js\wow.min.js" />
+    <Content Include="Content\SMS\assets\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\SMS\assets\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\SMS\assets\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\UploadFile\member-1.png" />
+    <Content Include="Content\UploadFile\member-2.png" />
+    <Content Include="Content\UploadFile\member-3.png" />
+    <Content Include="Content\UploadFile\member-4.png" />
+    <Content Include="Content\UploadFile\member-5.png" />
+    <Content Include="Content\UploadFile\member-6.png" />
+    <Content Include="Content\UploadFile\member-7.png" />
+    <Content Include="Content\UploadFile\member-8.png" />
+    <Content Include="Content\UploadFile\member-9.png" />
+    <Content Include="Content\UploadFile\photo1.png" />
+    <Content Include="Content\UploadFile\photo2.png" />
+    <Content Include="Content\UploadFile\photo3.png" />
+    <Content Include="Content\UploadFile\photo4.png" />
+    <Content Include="Content\UploadFile\photo5.png" />
+    <Content Include="Content\UploadFile\photo6.png" />
+    <Content Include="Content\UploadFile\profile-pic.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\dbModelSMS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbModelSMS.edmx</DependentUpon>
+      <LastGenOutput>dbModelSMS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\dbModelSMS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbModelSMS.edmx</DependentUpon>
+      <LastGenOutput>dbModelSMS.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Content\Dashboard\assets\icon\CAW.TTF" />
+    <Content Include="Content\Dashboard\assets\icon\fa-brands-400.eot" />
+    <Content Include="Content\Dashboard\assets\icon\fa-brands-400.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\fa-brands-400.woff" />
+    <Content Include="Content\Dashboard\assets\icon\fa-brands-400.woff2" />
+    <Content Include="Content\Dashboard\assets\icon\fa-regular-400.eot" />
+    <Content Include="Content\Dashboard\assets\icon\fa-regular-400.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\fa-regular-400.woff" />
+    <Content Include="Content\Dashboard\assets\icon\fa-regular-400.woff2" />
+    <Content Include="Content\Dashboard\assets\icon\fa-solid-900.eot" />
+    <Content Include="Content\Dashboard\assets\icon\fa-solid-900.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\fa-solid-900.woff" />
+    <Content Include="Content\Dashboard\assets\icon\fa-solid-900.woff2" />
+    <Content Include="Content\Dashboard\assets\icon\feather\fonts\feather.eot" />
+    <Content Include="Content\Dashboard\assets\icon\feather\fonts\feather.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\feather\fonts\feather.woff" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Dashboard\assets\icon\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\Dashboard\assets\icon\fontawesome-webfont.eot" />
+    <Content Include="Content\Dashboard\assets\icon\fontawesome-webfont.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\fontawesome-webfont.woff" />
+    <Content Include="Content\Dashboard\assets\icon\fontawesome-webfont.woff2" />
+    <Content Include="Content\Dashboard\assets\icon\FontAwesome.otf" />
+    <Content Include="Content\Dashboard\assets\icon\icofont\fonts\icofont.eot" />
+    <Content Include="Content\Dashboard\assets\icon\icofont\fonts\icofont.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\icofont\fonts\icofont.woff" />
+    <Content Include="Content\Dashboard\assets\icon\ionicons.eot" />
+    <Content Include="Content\Dashboard\assets\icon\ionicons.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\ionicons.woff" />
+    <Content Include="Content\Dashboard\assets\icon\Linearicons-Free.eot" />
+    <Content Include="Content\Dashboard\assets\icon\Linearicons-Free.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\Linearicons-Free.woff" />
+    <Content Include="Content\Dashboard\assets\icon\Linearicons-Free.woff2" />
+    <Content Include="Content\Dashboard\assets\icon\SEGOEUI.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\SEGOEUIB.TTF" />
+    <Content Include="Content\Dashboard\assets\icon\segoeuii.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\SEGOEUIZ.TTF" />
+    <Content Include="Content\Dashboard\assets\icon\Simple-Line-Icons.eot" />
+    <Content Include="Content\Dashboard\assets\icon\Simple-Line-Icons.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\Simple-Line-Icons.woff" />
+    <Content Include="Content\Dashboard\assets\icon\Simple-Line-Icons.woff2" />
+    <Content Include="Content\Dashboard\assets\icon\themify-icons\fonts\themify.eot" />
+    <Content Include="Content\Dashboard\assets\icon\themify-icons\fonts\themify.ttf" />
+    <Content Include="Content\Dashboard\assets\icon\themify-icons\fonts\themify.woff" />
+    <Content Include="Content\Dashboard\assets\images\auth\Thumbs.db" />
+    <Content Include="Content\Dashboard\assets\images\Thumbs.db" />
+    <Content Include="Content\SMS\assets\css\Flaticon.eot" />
+    <Content Include="Content\SMS\assets\css\Flaticon.ttf" />
+    <Content Include="Content\SMS\assets\css\Flaticon.woff" />
+    <Content Include="Content\SMS\assets\css\Flaticon.woff2" />
+    <Content Include="Content\SMS\assets\css\Flaticond41d.eot" />
+    <Content Include="Content\SMS\assets\fonts\lightcaseeead.eot" />
+    <Content Include="Content\SMS\assets\fonts\lightcaseeead.ttf" />
+    <Content Include="Content\SMS\assets\fonts\lightcaseeead.woff" />
+    <Content Include="Content\SMS\assets\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\SMS\assets\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\SMS\assets\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\SMS\assets\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\SMS\assets\webfonts\fa-brands-400d41d.eot" />
+    <Content Include="Content\SMS\assets\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\SMS\assets\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\SMS\assets\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\SMS\assets\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\SMS\assets\webfonts\fa-regular-400d41d.eot" />
+    <Content Include="Content\SMS\assets\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\SMS\assets\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\SMS\assets\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\SMS\assets\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\SMS\assets\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="Areas\Admin\Views\_LayoutDashboard.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LevelServices\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LevelServices\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LevelServices\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LevelServices\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Services\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ResetPassword.cshtml" />
+    <EntityDeploy Include="Models\dbModelSMS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbModelSMS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dbModelSMS.edmx.diagram">
+      <DependentUpon>dbModelSMS.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Customers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Friends.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\SentMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\DetailMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\ReceivedMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Details.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\formValidate\levelService.js" />
+    <Content Include="Scripts\formValidate\ServiceValidate.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutSMS.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Customer\Register.cshtml" />
+    <Content Include="Views\Customer\Verify.cshtml" />
+    <Content Include="Views\Customer\Login.cshtml" />
+    <Content Include="Views\Customer\UpdateProfile.cshtml" />
+    <Content Include="Views\Shared\_LayoutSMS2.cshtml" />
+    <Content Include="Views\Customer\ProfilePage.cshtml" />
+    <Content Include="Views\Customer\FriendsListPartial.cshtml" />
+    <Content Include="Views\Customer\ChangePassword.cshtml" />
+    <Content Include="Views\Customer\ForgotPassword.cshtml" />
+    <Content Include="Views\Message\FriendsListPartial.cshtml" />
+    <Content Include="Views\Message\MessageFriends.cshtml" />
+    <Content Include="Views\Message\SendMessageNonFriends.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\SentMessageNonFriends.cshtml" />
+    <Content Include="Views\Message\ReceiveMessageNonFriends.cshtml" />
+    <Content Include="Views\Friends\SearchFriends.cshtml" />
+    <Content Include="Views\Customer\ListFriends.cshtml" />
+    <Content Include="Views\Friends\SendReceiveFriends.cshtml" />
+    <Content Include="Views\Customer\FriendsListMiniPartial.cshtml" />
+    <Content Include="Views\Friends\SearchResultFriends.cshtml" />
+    <Content Include="Views\Friends\YourFriends.cshtml" />
+    <Content Include="Views\Payment\Create.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\PaymentConfirm.cshtml" />
+    <Content Include="Views\ServiceCus\Index.cshtml" />
+    <Content Include="Views\ServiceCus\Details.cshtml" />
+    <Content Include="Views\ServiceCus\Detail_RegisteredService.cshtml" />
+    <Content Include="Views\Customer\ApiIdDevice.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62010</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44316/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

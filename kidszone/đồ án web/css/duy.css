@@ -1,0 +1,264 @@
+*{margin: 0;padding: 0}
+
+body {
+    background-color: #ffedd5;
+    font-family: Open Sans, sans-serif;
+
+}
+
+/*<header>*/
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-default {
+    background-color: #e24d00;
+    border: none;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: all 0.5s;
+}
+
+.navbar-brand > img {
+    width: 160px;
+    margin-top: -12px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: greenyellow;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    color: greenyellow;
+    background-color: #e24d00;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.dropdown-menu {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 1px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu > li > a {
+
+    display: block;
+
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: greenyellow;
+    white-space: normal;
+    background-color: #e24d00;
+
+}
+
+.navbar-nav > li > {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    background-color: orange;
+    color: white;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: greenyellow;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: greenyellow;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: greenyellow;
+}
+
+
+#slider {
+    width: 100%;
+    padding: 0;
+    margin-top: -26px;
+}
+
+.welcomesizer {
+    padding: 20px 50px 0px 50px;
+    text-align: center;
+    color: green;
+    /*color: #5dca4c;*/
+}
+
+P.welfont {
+    font-size: 18px;
+    line-height: 1.39;
+    color: green;
+}
+
+
+.product {
+    text-align: center;
+    margin: 50px;
+}
+
+.btn-start {
+    color: #ffffff;
+    background: #51d466;
+    border: 1px solid #30c247;
+}
+
+.mb4 {
+    color: green;
+}
+
+/*<footer>*/
+.site-footer {
+    position: relative;
+    background-color: #5e5e5e;
+    clear: both;
+}
+
+.site-footer .site-info {
+
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#ztl-copyright {
+    color: #c1c1c1;
+    line-height: 20px;
+    padding: 10px 0;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.container-footer {
+    max-width: 100%;
+    padding-top: 25px;
+    width: 100%;
+}
+
+.font-footer {
+    line-height: 15px;
+}
+
+.icon{
+    list-style-type: none;
+    text-align: right;
+
+}
+
+.icon li {
+    display: inline-block;
+    padding: 0 3px;
+}
+.icon li a{color: white; transition: transform .2s}
+.icon li>a:hover{
+    color: cornflowerblue;
+    text-decoration: none;
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+.icon .fab {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: white;
+    -webkit-transition: all 0.05s ease-in-out;
+    transition: all 0.05s ease-in-out;
+    font-size: 1.4em;
+}
+/*<footer>*/
+
+/*<duy>*/
+.pad{padding: 30px;}
+
+.mar {
+    background: cadetblue;
+}
+
+audio {
+    width: 222px;
+    height: 60px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.vien{border: 1px solid green}
+
+/*to top*/
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color:  rgba(255, 99 , 71, 0.4);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 25px;
+}
+
+#myBtn:hover {
+    background-color:rgb(255, 99, 71);
+}
+/*to top*/
+
+/*pre and next*/
+.preNext{
+    display: inline;
+    clear: both;
+}
+
+.pre{
+    float: left;
+    line-height: 40px;
+    margin-bottom: 30px;padding: 4px;
+
+}
+.next{
+    float: right;
+    line-height: 40px;
+    margin-bottom: 30px;padding: 4px;
+}
+
+.pre>button,.next>button{
+    padding: 6px 20px;
+    background: tomato; color: white;
+    font-size: 24px; border: none;
+}
+.pre>button:hover,.next>button:hover{
+    background: #a4c400;
+}
+/*pre and next*/
+
+/*read*/
+.read p{
+    font-size: 25px;
+    text-indent: 40px;
+    color: saddlebrown;
+    font-family:'Princess Sofia';
+}
+/*read*/
+
+
+/*<duy>*/
+
+

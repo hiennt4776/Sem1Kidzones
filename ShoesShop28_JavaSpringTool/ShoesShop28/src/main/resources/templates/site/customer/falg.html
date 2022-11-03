@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Material Able bootstrap admin template by Codedthemes</title>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+      <meta name="author" content="Codedthemes" />
+      <!-- Favicon icon -->
+
+      <link rel="icon" href="/adasserts/images/favicon.ico" type="image/x-icon">
+      <!-- Google font-->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+      <!-- Required Fremwork -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/css/bootstrap/css/bootstrap.min.css">
+      <!-- waves.css -->
+      <link rel="stylesheet" href="/adasserts/pages/waves/css/waves.min.css" type="text/css" media="all">
+      <!-- themify-icons line icon -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/icon/themify-icons/themify-icons.css">
+      <!-- ico font -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/icon/icofont/css/icofont.css">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/icon/font-awesome/css/font-awesome.min.css">
+      <!-- Style.css -->
+      <link rel="stylesheet" type="text/css" href="/adasserts/css/style.css">
+      
+      <style>
+        .error{
+            padding-top: 5px;
+            font-size: 20px;
+            color: red;
+        }
+        input{
+            display: block;
+        }
+    </style>
+  </head>
+
+  <body themebg-pattern="theme1">
+  <!-- Pre-loader start -->
+  <div class="theme-loader">
+      <div class="loader-track">
+          <div class="preloader-wrapper">
+              <div class="spinner-layer spinner-blue">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+              <div class="spinner-layer spinner-red">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+
+              <div class="spinner-layer spinner-yellow">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+
+              <div class="spinner-layer spinner-green">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                      <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Pre-loader end -->
+  <section class="login-block">
+        <!-- Container-fluid starts -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 offset-3 mt-4">
+			<form th:action="@{/changeCustomerPassword}" method="post"
+				th:object="${changePassword}">
+				<div class="card">
+
+					<div class="card-body">
+						<div th:if="@{message != null}" role="alert">
+							<div>
+								<i>[[${message}]]</i>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="name">Old Password</label> <input type="password"
+								class="form-control" th:field="*{oldPassword}" id="oldPassword"
+								aria-describedby="oldPasswordHid" placeholder=" Old Password">
+							<small th:if="${#fields.hasErrors('oldPassword')}"
+								id="oldPasswordHid" class="form-text text-muted">Password
+								required or invalid</small>
+
+						</div>
+
+						<div class="form-group">
+							<label for="name">New Password</label> 
+							<input type="password"
+								class="form-control" th:field="*{newPassword}" id="newPassword"
+								aria-describedby="newPasswordHid" placeholder=" New Password">
+								
+							<small th:if="${#fields.hasErrors('newPassword')}"
+								id="newPasswordHid" class="form-text text-muted">Password
+								required or invalid</small>
+
+						</div>
+
+						<div class="form-group">
+							<label for="name">Confirm Password</label>
+							<input type="password"
+								class="form-control" 
+								id="confirm-password" name="confirm-password"
+								placeholder="Confirm Password"> 
+							
+
+						</div>
+
+					</div>
+					<div class="card-footer text-muted">
+						<button type="reset" class="btn btn-secondary">Reset</button>
+
+						<button class="btn btn-primary">
+							<i class="fas fa-save"></i> <span>Change Password</span>
+						</button>
+					</div>
+
+
+				</div>
+			</form>
+
+		</div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid --> 
+    </section>
+    
+<script type="text/javascript" src="/adasserts/js/jquery/jquery.min.js "></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<script type="text/javascript">
+
+    function submitForm()
+    {
+        $("#register").validate({
+            rules:
+                {
+                    
+                    "oldPassword":{
+                        required:true,
+                        minlength: 6,
+                        maxlength: 30,
+                    },
+                    "newPassword":{
+                        required:true,
+                        minlength: 6,
+                        maxlength: 30,
+                    },
+                    "confirm-password":{
+                        required:true,
+                        minlength: 6,
+                        maxlength: 30,
+                        equalTo: '[name="password"]'
+                    }
+                },
+            messages:
+                {
+                    
+                    "oldPassword":{
+                        required:"Vui lòng nhập mật khẩu",
+                        minlength: "Nhập ít nhất 6 kí tự",
+                        maxlength: "Nhập nhiều nhất 30 kí tự",
+                    },
+                    "newPassword":{
+                        required:"Vui lòng nhập mật khẩu mới",
+                        minlength: "Nhập ít nhất 6 kí tự",
+                        maxlength: "Nhập nhiều nhất 30 kí tự",
+                    },
+                    "confirm-password":{
+                        required: "Vui lòng nhập",
+                        minlength: "Nhập ít nhất 6 kí tự",
+                        maxlength: "Nhập nhiều nhất 30 kí tự",
+                        equalTo: "Mật khẩu không khớp"
+                    }
+                }
+        });
+    }
+</script>
+<script type="text/javascript" src="/adasserts/js/jquery-ui/jquery-ui.min.js "></script>
+<script type="text/javascript" src="/adasserts/js/popper.js/popper.min.js"></script>
+<script type="text/javascript" src="/adasserts/js/bootstrap/js/bootstrap.min.js "></script>
+<!-- waves js -->
+<script src="/adasserts/pages/waves/js/waves.min.js"></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="/adasserts/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="/adasserts/js/common-pages.js"></script>
+
+</body>
+
+</html>

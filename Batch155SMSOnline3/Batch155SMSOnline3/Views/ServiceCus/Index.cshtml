@@ -1,0 +1,285 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Service>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
+    var regisServicesList = (List<Batch155SMSOnline3.Models.Service>)ViewBag.RegisteredService;
+}
+
+@if (regisServicesList.Count != 0)
+{
+
+    <!--=================Registered Service================= -->
+    <section class="service-section padding-bottom padding-top">
+        <div class="container">
+            <div class="section-header">
+                <span class="cate">Hi there</span>
+                <h2 class="title">Service you have subscribed to</h2>
+            </div>
+            <div class="row justify-content-start mb-30-none">
+                @foreach (var item in regisServicesList)
+                {
+                    var urlDetail = Url.Action("Detail_RegisteredService", "ServiceCus", new { id = item.Id });
+                    <div class="col-md-6 col-lg-4">
+                        <div class="service-item text-center">
+                            <div class="service-thumb">
+                                <img src="~/@item.ServiceImage" style="height:24px;width:24px;" alt="img loading...">
+                            </div>
+                            <div class="service-content">
+                                <h4 class="title"><a href="@urlDetail">@item.ServiceName</a></h4>
+                                <p> </p>
+                                <p>Temporibus magnis. Aliquam netus phasellus wisi utacper fusce wold of messgeuing </p>
+                                <a href="@urlDetail">See detail <i class="fas fa-caret-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </section>
+    <!--=================Registered Service================= <i class="flaticon-paper-plane"></i> -->
+
+
+
+}
+
+
+<!--=================All Services================= -->
+<section class="price-section padding-bottom">
+    <div class="container">
+        <div class="section-header">
+            <div><hr /></div>
+            <span class="cate">Services</span>
+            <h2 class="title">The best services for U</h2>
+        </div>
+        <div class="row mb-30-none justify-content-start">
+            @foreach (var item in Model)
+            {
+                decimal y = item.Price.Value;
+                var urlDetail = Url.Action("Details", "ServiceCus", new { id = item.Id });
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="price-item">
+                        <div class="price-header">
+                            <span class="category">@item.ServiceName</span>
+                            <h3 class="sub-title">@(y==9999 ? "Contact us" : String.Format(info, "{0:c}", y))</h3>
+                        </div>
+                        <ul>
+                            <li>
+                                <span>validity</span>@item.LevelService.LevelName
+                            </li>
+
+
+                            <li>
+                                <span>24/7</span>yes
+                            </li>
+                            <li>
+                                <span>worldwide access</span>yes
+                            </li>
+                            <li>
+                                <a href="@urlDetail" class="custom-button">try now</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+<!--=================All Services================= -->
+@*
+            <section class="become-operator padding-top padding-bottom">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="cate">Hi there</span>
+                        <h2 class="title">Service you have subscribed to</h2>
+                    </div>
+
+                    <div class="row mb-30-none justify-content-center">
+                        @foreach (var item in regisServicesList)
+                        {
+
+                            <div class="col-md-6 col-lg-4">
+                                <div class="step-item">
+                                    <div class="step-thumb">
+                                        <a href="@Url.Action("Details", "ServiceCus", new { id = item.Id })">
+                                            <img src="~/@item.ServiceImage" style="height:242px;width:360px;" alt="img loading...">
+                                        </a>
+                                    </div>
+                                    <div class="step-content d-flex flex-wrap align-items-center">
+                                        <div class="content">
+                                            <h4 class="sub-title"><a href="#0">@item.ServiceName</a></h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </section>
+
+
+    <section class="become-operator padding-top padding-bottom">
+        <div class="container">
+            <div class="section-header">
+                <span class="cate">Services</span>
+                <h2 class="title">The best services for U</h2>
+            </div>
+
+            <div class="row mb-30-none justify-content-center">
+                @foreach (var item in Model)
+                {
+                    decimal y = item.Price.Value;
+                    <div class="col-md-6 col-lg-4">
+                        <div class="step-item">
+                            <div class="step-thumb">
+                                <a href="@Url.Action("Details", "ServiceCus", new { id = item.Id })">
+                                    <img src="~/@item.ServiceImage" style="height:242px;width:360px;" alt="img loading...">
+                                </a>
+                            </div>
+                            <div class="step-content d-flex flex-wrap align-items-center">
+                                <div class="content">
+                                    <h4 class="sub-title"><a href="@Url.Action("Details", "ServiceCus", new { id = item.Id })">@item.ServiceName</a></h4>
+                                </div>
+                                <h4 class="step">@(String.Format(info, "{0:c}", y))</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </section>
+
+
+*@
+
+
+
+@*
+    <h2>Index</h2>
+
+
+    <div class="page-wrapper">
+        <!--  //var link = "https://localhost:44316/" + item.ServiceImage; -->
+        <div class="page-body">
+            <!-- Basic table card start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Basic Table</h5>
+                    <span>use class <code>table</code> inside table element</span>
+                    <div class="card-header-right">
+                        <ul class="list-unstyled card-option">
+                            <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                            <li><i class="fa fa-window-maximize full-card"></i></li>
+                            <li><i class="fa fa-minus minimize-card"></i></li>
+                            <li><i class="fa fa-refresh reload-card"></i></li>
+                            <li><i class="fa fa-trash close-card"></i></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-block table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>@Html.DisplayNameFor(model => model.ServiceName)</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ServiceImage)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    decimal y = item.Price.Value;
+                                    <tr>
+                                        <th scope="row">@x</th>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ServiceName)
+                                        </td>
+                                        <td>
+                                            <img src="~/@item.ServiceImage" alt="Image loading.." style="height:50px;width:50px;" />
+                                        </td>
+                                        <td>
+                                            @(String.Format(info, "{0:c}", y))
+
+                                        </td>
+
+                                        <td>
+
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                                        </td>
+                                    </tr>
+                                    x++;
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <section class="operator-section padding-bottom padding-top">
+        <div class="container">
+            <div class="row justify-content-center mb-30-none">
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="operator-item">
+
+                        <div class="operator-thumb">
+                            <a href="@Url.Action( "Details", "ServiceCus", new { id = item.Id })">
+                                <img src="~/@item.ServiceImage" style="height:50px;width:50px;" alt="img loading...">
+                            </a>
+                        </div>
+
+                            <h4 class="title">@item.ServiceName</h4><br />
+                            <h4 class="title">@item.Price</h4>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </section>
+*@
+
+<!--=================Become Operator Section================= -->
+<!--=================Become Operator Section================= -->

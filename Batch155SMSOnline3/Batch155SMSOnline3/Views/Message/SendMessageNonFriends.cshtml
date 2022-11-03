@@ -1,0 +1,157 @@
+﻿@model Batch155SMSOnline3.Models.Message
+
+@{
+    ViewBag.Title = "MessageNonFriends";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+<style>
+    .form-group small {
+        color: #e74c3c;
+        font-size: 16px;
+        visibility: hidden;
+    }
+
+    .form-group.error small {
+        visibility: visible;
+    }
+</style>
+
+<section class="privacy-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 d-md-block d-none">
+                <div class="privacy-sidebar-content">
+                    <ul>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("SendMessageNonFriends","Message")">New Message</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("SentMessageNonFriends","Message")">Sent Message</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("ReceiveMessageNonFriends","Message")">Receive Message</a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h4>Sending message to non - friends</h4>
+                @using (Html.BeginForm("SendMessageNonFriends", "Message", FormMethod.Post, htmlAttributes: new { @enctype = "multipart/form-data", @id = "message-friend" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label class="control-label">Phone Number Receiver</label>
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PhoneNumberReceive, new { htmlAttributes = new { @class = "form-control", @id = "phoneNumber" } })
+
+                            @Html.ValidationMessageFor(model => model.PhoneNumberReceive, "", new { @class = "text-danger" })
+                            <small>Error message</small>
+                            @if (ViewBag.Friend != null)
+                            {
+                                <p class="text-danger">@ViewBag.Friend</p>
+                            }
+                        </div>
+                      
+                    </div>  
+
+                    <div class="form-group">
+                        <label class="control-label">Content Message</label>
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.ContentMessage, new { @maxlength = "120", @placeholder = "Max is 120 character" })
+                         
+                            @Html.ValidationMessageFor(model => model.ContentMessage, "", new { @class = "text-danger" })
+                            <small>Error message</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-2">
+                            <input type="submit" value="Send" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+        <br />
+    </div>
+</section>
+
+<script>
+    const form = document.getElementById('message-friend');
+
+    const phoneNumber = document.getElementById('phoneNumber');
+    const contentMessage = document.getElementById('ContentMessage');
+
+    form.addEventListener('submit', e => {
+        if (!checkInputs()) e.preventDefault();
+
+
+    });
+
+    function checkInputs() {
+
+
+    
+        const phoneNumberValue = phoneNumber.value.trim();
+        const contentMessageValue = contentMessage.value.trim();
+
+       
+        var contentMessageBoolean = new Boolean(true);
+        var phoneNumberBoolean = new Boolean(true);
+
+
+
+        if (contentMessageValue === '') {
+            setErrorFor(contentMessage, 'Content Message cannot be blank');
+            contentMessageBoolean = false;
+        }
+        else {
+            setSuccessFor(contentMessage)
+        }
+
+        if (phoneNumberValue === '') {
+            setErrorFor(phoneNumber, 'Phone Number cannot be blank');
+            phoneNumberBoolean = false;
+        }
+        else if (!isPhone(phoneNumberValue)) {
+            setErrorFor(phoneNumber, 'Not a valid phone');
+            phoneNumberBoolean = false;
+        }
+        else {
+            setSuccessFor(phoneNumber)
+        }
+
+
+        return (contentMessageBoolean && phoneNumberBoolean);
+
+    }
+
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        formControl.className = 'form-group error';
+        small.innerText = message;
+    }
+
+    function setSuccessFor(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'form-group';
+    }
+
+
+    function isPhone(phone) {
+        return /^((849|843|847|848|845)+([0-9]{8}))$/.test(phone);
+    }
+
+
+
+
+</script>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Customer>
+@{
+    ViewBag.Title = "SearchResultFriends";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+<br />
+
+<style>
+    h5 {
+        text-align: center;
+    }
+</style>
+<br />
+
+<h5>Search Result Friends</h5>
+
+<div class="container">
+    <div class="row mb-30-none justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="plan-item">
+                    <img src='@Url.Content("~/"+ item.Image)' width="200" height="200" />
+                    
+                    <div class="plan-content">
+                        <div class="title">@Html.DisplayFor(modelItem => item.CustomerName)</div>
+                        <div>@Html.DisplayFor(modelItem => item.PhoneNumber)</div>
+                        @Html.ActionLink("+Friend", "AddFriend", new { idReceive = item.Id }, htmlAttributes: new { @class = "custom-button" })
+
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

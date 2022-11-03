@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+
+	<div class="page-wrapper" layout:fragment="content">
+
+
+		<form th:action="@{/admin/brands/saveOrUpdate}" method="post"
+			th:object="${brand}">
+			<div class="card">
+				<div class="card-header">
+					<h2>Add New Brand</h2>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="brandId">Brand ID:</label> 
+								<input type="hidden"
+									th:field="*{isEdit}"> 
+								<input type="text"
+									class="form-control" th:field="*{brandId}"
+									aria-describedby="brandIdHid" placeholder="Brand ID" readonly>
+									
+								<small th:if="${#fields.hasErrors('brandId')}" id="brandIdHid"
+									class="form-text text-muted">Brand id is required</small>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="name">Brand Name</label> 
+								<input type="text"
+									class="form-control" th:field="*{name}" id="name"
+									aria-describedby="nameHid" placeholder="Brand Name"> 
+									<small
+										th:if="${#fields.hasErrors('name')}" id="nameHid"
+										th:class="${#fields.hasErrors('name')}? error" th:errors="*{name}"
+										style="color:red">
+									</small>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="name">Email</label> <input type="text"
+									class="form-control" th:field="*{email}" id="email"
+									aria-describedby="emailHid" placeholder="Email"> 
+									<small
+										th:if="${#fields.hasErrors('email')}" id="emailHid"
+										th:class="${#fields.hasErrors('email')}? error" th:errors="*{email}"
+										style="color:red">
+									</small>
+								
+									
+
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="name">Phone</label> <input type="text"
+									class="form-control" th:field="*{phone}" id="phone" placeholder="0xxxxxxxxx or +84xxxxxxxxx"
+									aria-describedby="phoneHid" > 
+									<small
+										th:if="${#fields.hasErrors('phone')}" id="phoneHid"
+										th:class="${#fields.hasErrors('phone')}? error" th:errors="*{phone}"
+										style="color:red">
+									</small>
+									
+							</div>	
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="name">address</label>
+								<textarea class="form-control" th:field="*{address}"
+									id="address" aria-describedby="addressHid"
+									placeholder="Address">
+                                </textarea>
+								<small
+										th:if="${#fields.hasErrors('address')}" id="addressHid"
+										th:class="${#fields.hasErrors('address')}? error" th:errors="*{address}"
+										style="color:red">
+								</small>
+							</div>
+					
+						</div>
+						<div class="col-sm-6">
+
+							<div class="form-group">
+								<label for="name">description</label>
+								<textarea class="form-control" th:field="*{description}"
+									id="description" aria-describedby="descriptionHid"
+									placeholder="Description">
+                                </textarea>
+								<small
+										th:if="${#fields.hasErrors('description')}" id="descriptionHid"
+										th:class="${#fields.hasErrors('description')}? error" th:errors="*{description}"
+										style="color:red">
+								</small>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer text-muted">
+					<button type="reset" class="btn btn-secondary">Reset</button>
+					<a th:href="@{/admin/brands}" class="btn btn-success">List
+						Sizes</a>
+					<button class="btn btn-primary">
+						<i class="fas fa-save"></i> 
+						
+						<span th:if="${brand.isEdit}">Update</span>
+						<span th:unless="${brand.isEdit}">Save</span>
+					</button>
+				</div>
+
+
+			</div>
+		</form>
+
+
+	</div>
+
+
+</body>
+</html>

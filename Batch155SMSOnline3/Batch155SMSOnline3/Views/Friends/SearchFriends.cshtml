@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "SearchFriends";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+<style>
+    h4 {
+        text-align: center;
+    }
+</style>
+<br />
+<h4>Search Friend</h4>
+
+@using (Html.BeginForm("SearchFriends", "Friends", FormMethod.Post, new { @class = "four-0-search" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { })
+
+    @Html.TextBox("txtSearch", "", htmlAttributes: new { @placeholder = "Input Name or Phone Number" })
+    <button type="submit">Search</button>
+
+
+}
+<br />

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+
+	<div class="page-wrapper" layout:fragment="content">
+	
+		<div class="card">
+			<div class="card-header">
+					<h2>Order Delivery</h2>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-sm-6">
+						<div  th:object="${shipment}">
+							<h5>Shipment</h5>
+							<div>
+								<h6>Shipment Name:</h6>
+								<p th:text="*{name}"></p>
+							</div>
+							<div>
+								<h6>Phone:</h6>
+								<p th:text="*{phone}"></p>
+							</div>
+							<div>
+								<h6>Address:</h6>
+								<p th:text="*{addressLine}"></p>
+							</div>
+							<div>
+								<h6>Province:</h6>
+								<p th:text="*{province}"></p>
+							</div>
+						</div>
+						
+					</div>
+						
+						<div class="col-sm-6">
+							<form th:action="@{/admin/orders/saveDeliver}" method="post" th:object="${order}" id="form">
+								<div class="form-group">
+									<label for="orderId">Order ID:</label> 
+									<input type="text"
+											class="form-control" th:field="*{orderId}"
+											aria-describedby="orderIdHid" placeholder="Order ID"
+											readonly> 
+									<small
+											th:if="${#fields.hasErrors('orderId')}" id="orderIdHid"
+											class="form-text text-muted">Order Id is required</small>
+								</div>		
+								<div class="form-group">
+			                         <label>Order Date</label>
+			                         <input type="date" class="form-control" th:field="*{orderDate}" id="orderDate" name="orderDate" readonly>
+			                         <br>
+			                         <label>Ship Date</label>
+			                         <input type="date" class="form-control" th:field="*{shipDate}" id="shipDate" name="shipDate">
+				                     <small
+											id="error"
+											style="color:red">
+									</small>
+			                   	</div>
+			               		<button class="btn btn-success"><i class="fas fa-save"></i> <span>Update</span></button>
+	                  		</form>
+	                  		
+	                  		<script>
+   								const form = document.getElementById('form');
+    							const orderDate = document.getElementById('orderDate');
+    							const shipDate = document.getElementById('shipDate');
+    							
+    							form.addEventListener('submit', e => {
+        							if (!checkDate()) e.preventDefault(); 
+        						});
+
+    							function checkDate() {
+    								 let orderDateCheck = new Date(orderDate.value);
+    								
+    								 let shipDateCheck = new Date(shipDate.value);
+    								  if(shipDateCheck < orderDateCheck) {
+    									  document.getElementById("error").innerHTML = "Ship date must be before order date";
+    									  
+    	    								return false;
+    								  }else return true;
+    								
+    							}
+    						</script>
+	                  		
+                  		</div>
+                  </div>
+			</div>		
+			
+			
+		
+
+
+		</div>
+			
+				
+			
+	</div>
+</body>
+</html>

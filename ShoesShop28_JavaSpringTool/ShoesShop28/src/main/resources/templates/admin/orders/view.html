@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+<head>
+
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+
+		<div class="pcoded-inner-content">
+			<div class="main-body">
+				<div class="page-wrapper">
+					<div class="page-body">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="card" th:object="${order}">
+									<div class="card-header">
+										
+										<h4 th:text="@{'Order Id:'+ ${orderId}}"></h4>
+									</div>
+									<div class="card-block">
+										<div class="row">
+											<div class="col-6">
+												<h5>Order</h5>
+												<div>
+													<h6>ID:</h6>
+													<p th:text="*{orderId}"></p>
+												</div>
+											
+												<div>
+													<h6>Employee:</h6>
+													<p th:text="*{customer.username}"></p>
+												</div>
+												<!-- 
+												<div>
+													<h6>Customer:</h6>
+													<p th:text="*{employee.name}"></p>
+												</div>
+												 -->
+												
+												<div>
+													<h6>Order date:</h6>
+													<p th:text="*{orderDate}"></p>
+												</div>
+												<div>
+													<h6>Ship date:</h6>
+													<p th:text="*{shipDate}"></p>
+												</div>
+											
+												<div>
+													<h6>Total:</h6>
+													<p th:text="*{grandTotal}"></p>
+												</div>
+
+												<div>
+													<h6>Status:</h6>
+													<p th:text="*{status}"></p>
+												</div>
+
+											</div>
+											
+											<div class="col-6">
+												<h5>Shipment</h5>
+												<div>
+												
+													<h6>Shipment Name:</h6>
+													<p th:text="*{shipment.name}"></p>
+												</div>
+												<div>
+													<h6>Phone:</h6>
+													<p th:text="*{shipment.phone}"></p>
+												</div>
+												<div>
+													<h6>Address:</h6>
+													<p th:text="*{shipment.addressLine}"></p>
+												</div>
+												<div>
+													<h6>Province:</h6>
+													<p th:text="*{shipment.province}"></p>
+												</div>
+												
+											</div>
+											
+										
+										</div>
+											<div>
+												<table class="table table-striped table-inverse">
+							<thead class="thead-inverse">
+								<tr>
+									
+									<th>ID</th>
+									<th>Shoes Type</th>
+									<th>Shoes Size</th>
+									<th>Quantity</th>
+									<th>Unit Price</th>
+									<th>sub total</th>
+								</tr>
+							</thead>
+							<tbody>
+							
+							
+								<tr th:each="orderDetail : ${orderDetails}">
+										
+									<td th:text="${orderDetail.orderDetailId}"></td>
+									<!--  -->
+									<td th:text="${orderDetail.shoes.shoesType.name}"></td>
+									<td th:text="${orderDetail.shoes.shoesSize.sizeNumber}"></td>
+									<td th:text="${orderDetail.quantity}"></td>
+									<td th:text="${orderDetail.unitPrice}"></td>
+									<td th:text="${orderDetail.quantity * orderDetail.unitPrice}"></td>
+								</tr>
+				
+							</tbody>
+						</table>
+										
+										</div>
+									</div>
+
+									
+								
+								
+								
+								
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>

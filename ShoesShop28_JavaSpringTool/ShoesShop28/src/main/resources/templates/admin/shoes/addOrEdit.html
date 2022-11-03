@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+  	<head>
+  	
+  	</head>
+	<body>
+
+     	<div class="page-wrapper" layout:fragment="content">
+           <div class="col mt-4">
+              <form action="/admin/shoes/saveOrUpdate" method="post" 
+	             	enctype="multipart/form-data" th:object="${shoes}">
+                <div class="card">
+                  <div class="card-header">
+                      <h2 th:text="${shoes.isEdit ? 'Edit Shoes' : 'Add New Shoes'}"></h2>
+                      <div th:if="@{message != null}">
+									 <div class="col-xs-12 col-sm-6 col-md-8">
+										<i>[[${message}]]</i>
+									 </div>
+									
+							</div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-7">
+                           <!-- b4-form-input-text -->
+                     
+						  <div class="form-group">
+                                <label for="shoesId">Shoes ID:</label>
+                                <input type="hidden" th:field="*{isEdit}">
+                                <input type="text" class="form-control" th:field="*{shoesId}"
+                                    aria-describedby="shoesIdHid" placeholder="Shoes Id" readonly>
+                                <small th:if="${#fields.hasErrors('shoesId')}" id="shoesIdHid" class="form-text text-muted">Shoes id is required</small>
+                            </div>
+					
+			            <div class="form-group">
+				           <label for="shoesTypeId">Shoes Type</label>
+				              <select class="form-control" name="shoesTypeId" id="shoesTypeId" th:field="*{shoesTypeId}">
+				                <option th:each="item: ${shoesTypes}" th:value="${item.shoesTypeId}"
+				                  th:text="${item.name}" th:selected="${item.shoesTypeId == shoes.shoesTypeId}">Shoes Type</option>
+				              </select>
+			           	</div>
+			           	
+			           	<div class="form-group">
+				           <label for="shoesSizeId">Shoes Size</label>
+				              <select class="form-control" name="shoesSizeId" id="shoesSizeId" th:field="*{shoesSizeId}">
+				                <option th:each="item: ${shoesSizes}" th:value="${item.shoesSizeId}"
+				                  th:text="${item.sizeNumber}" th:selected="${item.shoesSizeId == shoes.shoesSizeId}">Shoes Size</option>
+				              </select>
+			           	</div>
+			          
+			            
+                    	<div class="input-group form-group">
+			             	<span class="input-group-text">Quantity</span>
+			                <input type="number" name="quantity" id="quantity" th:field="*{quantity}" 
+			                 class="form-control" placeholder="Quantity">
+			              
+			            </div>
+			                      
+			           
+					         
+					    <div class="form-group">
+					         <label for="status">Status</label>
+					         <select class="form-control" name="status" id="status" th:field="*{status}">
+					              <option value="Stocking">Stocking</option>
+					              <option value="Out of stock">Out of stock</option>
+					              <option value="Stop Business">Stop Business</option>
+					                    
+					         </select>
+					    </div>      
+			           
+			           
+                      </div>
+                    
+                   
+                  </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <a th:href="@{/admin/shoes/add}" class="btn btn-success">New</a>
+                    <button class="btn btn-primary" th:text="${shoes.isEdit? 'Update' : 'Save'}">Save</button>
+                    <a th:if="${shoes.isEdit}" th:href="@{'/admin/shoes/delete/' + ${shoes.shoesId}}" class="btn btn-danger float-right">Delete</a>
+             
+             
+                  </div>
+           
+                </div>
+              </form>
+               
+               
+            </div>
+ 
+	 
+  		
+  		</div>
+ 
+      
+	</body>
+</html>

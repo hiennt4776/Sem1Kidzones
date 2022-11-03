@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/dashboardLayout.html}">
+  	<head>
+  	
+  	</head>
+	<body>
+
+     		<div layout:fragment="content">
+          
+          
+             <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card" th:object="${employee}">
+                                                    <div class="card-header">
+                                                        <h4 th:text="*{username}"></h4>
+                                              
+                                                      
+                                                    </div>
+                                                    <div class="card-block">
+                                                    <div class="row">
+	                                                    <div class="col-6">
+	                                                    	<div>
+	                                                    		<h6>Username:</h6>
+		                                                    	<p th:text="*{username}"></p>
+	                                                    	</div>
+	                                                    	<div>
+	                                                    		<h6>Name:</h6>
+		                                                    	<p th:text="*{name}"></p>
+	                                                    	</div>
+	                                                    	<div>
+	                                                    		<h6>Gender</h6>
+	                                                    		<p th:text="${gender} ? 'Male' : 'Female'"></p>
+	                                                    		
+	                                                    	</div>
+	                                                    	<div>
+		                                                    	<h6>Identity Card:</h6>
+		                                                    	<p th:text="*{identityCard}"></p>
+		                                                    </div>
+		                                                    <div>
+		                                                    	<h6>Email:</h6>
+		                                                    	<p th:text="*{email}"></p>
+		                                                    </div>
+		                                                   
+	                                                  
+	                                                    </div>
+	                                                    <div class="col-6">
+	                                                      <div>
+		                                                    	<h6>Phone:</h6>
+		                                                    	<p th:text="*{phone}"></p>
+		                                                    </div>
+	                                                    	<div>
+	                                                    		<h6>Status:</h6>
+		                                                    	<p th:text="*{status}"></p>
+	                                                    	</div>
+	                                                    	<div>
+	                                                    		<h6>Role:</h6>
+		                                                    	<p th:text="*{role}"></p>
+	                                                    	</div>
+		                                                   
+		                                                    <div>
+		                                                    	<h6>Address:</h6>
+		                                                    	<p th:text="*{address}"></p>
+		                                                    </div>
+	                                                    </div>
+                 									</div>
+								            	 </div>
+								            	</div>
+                                         
+                                                
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+            </div>
+ 
+   
+ 
+      
+	</body>
+</html>

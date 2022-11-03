@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbBatch155SMS3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Active">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdService" Type="Int32" />
+    <Property Name="IdCustomer" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="StartService" Type="DateTime" Precision="3" />
+    <Property Name="EndService" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Active__IdCustom__25518C17" FromRole="Active" ToRole="Customers" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__Active__IdServic__245D67DE" FromRole="Active" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ContactEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContentContact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="VerifyCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfRegistration" Type="DateTime" Precision="3" />
+    <Property Name="MaritalStatusId" Type="Int32" />
+    <Property Name="Hobbies" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Likes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Dislike" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Cuisines" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sports" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="School" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="College" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WorkStatus" Type="Int32" />
+    <Property Name="Organization" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SpeedSMSAPI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="deviceID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Actives" Relationship="Self.FK__Active__IdCustom__25518C17" FromRole="Customers" ToRole="Active" />
+    <NavigationProperty Name="MaritalStatu" Relationship="Self.FK__Customers__Marit__10566F31" FromRole="Customers" ToRole="MaritalStatus" />
+    <NavigationProperty Name="WorkStatu" Relationship="Self.FK__Customers__WorkS__114A936A" FromRole="Customers" ToRole="WorkStatus" />
+    <NavigationProperty Name="Friends" Relationship="Self.FK__Friends__IdUserF__17F790F9" FromRole="Customers" ToRole="Friends" />
+    <NavigationProperty Name="Friends1" Relationship="Self.FK__Friends__IdUserF__18EBB532" FromRole="Customers" ToRole="Friends" />
+    <NavigationProperty Name="Messages" Relationship="Self.FK__Messages__IdUser__14270015" FromRole="Customers" ToRole="Messages" />
+    <NavigationProperty Name="Messages1" Relationship="Self.FK__Messages__IdUser__151B244E" FromRole="Customers" ToRole="Messages" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUserFriendSend" Type="Int32" />
+    <Property Name="IdUserFriendReceive" Type="Int32" />
+    <Property Name="TimeFriend" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Friends__IdUserF__17F790F9" FromRole="Friends" ToRole="Customers" />
+    <NavigationProperty Name="Customer1" Relationship="Self.FK__Friends__IdUserF__18EBB532" FromRole="Friends" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="LevelService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LevelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TimeServerMonth" Type="Int32" />
+    <Property Name="IdUser" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__LevelServ__IdUse__1DB06A4F" FromRole="LevelServices" ToRole="Users" />
+    <NavigationProperty Name="Services" Relationship="Self.FK__Services__IdLeve__208CD6FA" FromRole="LevelServices" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="MaritalStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaritalStatusName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customers__Marit__10566F31" FromRole="MaritalStatus" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUserSend" Type="Int32" />
+    <Property Name="IdUserReceive" Type="Int32" />
+    <Property Name="ContentMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TimeMessage" Type="DateTime" Precision="3" />
+    <Property Name="PhoneNumberReceive" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Messages__IdUser__14270015" FromRole="Messages" ToRole="Customers" />
+    <NavigationProperty Name="Customer1" Relationship="Self.FK__Messages__IdUser__151B244E" FromRole="Messages" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IdLevel" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="StopServices" Type="Boolean" />
+    <Property Name="IdUser" Type="Int32" />
+    <NavigationProperty Name="Actives" Relationship="Self.FK__Active__IdServic__245D67DE" FromRole="Services" ToRole="Active" />
+    <NavigationProperty Name="LevelService" Relationship="Self.FK__Services__IdLeve__208CD6FA" FromRole="Services" ToRole="LevelServices" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Services__IdUser__2180FB33" FromRole="Services" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityCard" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Stop" Type="Boolean" />
+    <NavigationProperty Name="LevelServices" Relationship="Self.FK__LevelServ__IdUse__1DB06A4F" FromRole="Users" ToRole="LevelServices" />
+    <NavigationProperty Name="Services" Relationship="Self.FK__Services__IdUser__2180FB33" FromRole="Users" ToRole="Services" />
+  </EntityType>
+  <EntityType Name="WorkStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkStatusName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customers__WorkS__114A936A" FromRole="WorkStatus" ToRole="Customers" />
+  </EntityType>
+  <Association Name="FK__Active__IdCustom__25518C17">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Active" Type="Self.Active" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Active">
+        <PropertyRef Name="IdCustomer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Active__IdServic__245D67DE">
+    <End Role="Services" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Active" Type="Self.Active" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Active">
+        <PropertyRef Name="IdService" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customers__Marit__10566F31">
+    <End Role="MaritalStatus" Type="Self.MaritalStatu" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaritalStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="MaritalStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customers__WorkS__114A936A">
+    <End Role="WorkStatus" Type="Self.WorkStatu" Multiplicity="0..1" />
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="WorkStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Friends__IdUserF__17F790F9">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Friends" Type="Self.Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="IdUserFriendSend" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Friends__IdUserF__18EBB532">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Friends" Type="Self.Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="IdUserFriendReceive" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Messages__IdUser__14270015">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="IdUserSend" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Messages__IdUser__151B244E">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="IdUserReceive" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LevelServ__IdUse__1DB06A4F">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="LevelServices" Type="Self.LevelService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LevelServices">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Services__IdLeve__208CD6FA">
+    <End Role="LevelServices" Type="Self.LevelService" Multiplicity="0..1" />
+    <End Role="Services" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LevelServices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="IdLevel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Services__IdUser__2180FB33">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Services" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbBatch155SMS3Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actives" EntityType="Self.Active" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Friends" EntityType="Self.Friend" />
+    <EntitySet Name="LevelServices" EntityType="Self.LevelService" />
+    <EntitySet Name="MaritalStatus" EntityType="Self.MaritalStatu" />
+    <EntitySet Name="Messages" EntityType="Self.Message" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="WorkStatus" EntityType="Self.WorkStatu" />
+    <AssociationSet Name="FK__Active__IdCustom__25518C17" Association="Self.FK__Active__IdCustom__25518C17">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Active" EntitySet="Actives" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Active__IdServic__245D67DE" Association="Self.FK__Active__IdServic__245D67DE">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Active" EntitySet="Actives" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customers__Marit__10566F31" Association="Self.FK__Customers__Marit__10566F31">
+      <End Role="MaritalStatus" EntitySet="MaritalStatus" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customers__WorkS__114A936A" Association="Self.FK__Customers__WorkS__114A936A">
+      <End Role="WorkStatus" EntitySet="WorkStatus" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Friends__IdUserF__17F790F9" Association="Self.FK__Friends__IdUserF__17F790F9">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Friends__IdUserF__18EBB532" Association="Self.FK__Friends__IdUserF__18EBB532">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Messages__IdUser__14270015" Association="Self.FK__Messages__IdUser__14270015">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Messages__IdUser__151B244E" Association="Self.FK__Messages__IdUser__151B244E">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LevelServ__IdUse__1DB06A4F" Association="Self.FK__LevelServ__IdUse__1DB06A4F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="LevelServices" EntitySet="LevelServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Services__IdLeve__208CD6FA" Association="Self.FK__Services__IdLeve__208CD6FA">
+      <End Role="LevelServices" EntitySet="LevelServices" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Services__IdUser__2180FB33" Association="Self.FK__Services__IdUser__2180FB33">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

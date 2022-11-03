@@ -1,0 +1,392 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.Message>
+
+@{
+    ViewBag.Title = "MessagePage";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+}
+
+<style>
+
+    #chat-container {
+        display: grid;
+        grid: 'search-container chat-title' 50px 'conversation-list chat-message-list' 1fr 'new-message-container chat-form' 50px /400px 1fr;
+        max-height: 475px;
+        width: 100%;
+        height: 95vh;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    #search-container,
+    #conversation-list,
+    #new-message-container {
+        background: #0048AA;
+    }
+
+    #search-container {
+        display: grid;
+        grid: 50px / 280px 1fr;
+        align-items: center;
+        padding: 0 20px;
+        grid-area: search-container;
+        border-radius: 10px 0 0 0;
+        box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
+        z-index: 1;
+        color: white;
+    }
+
+        #search-container button {
+            outline: none;
+            background: #eee;
+            border: 2px #ddd;
+            color: #0048AA;
+            border-radius: 6px;
+            height: 35px;
+            margin-left: 5px;
+            margin-right: 2px;
+        }
+
+        #search-container input {
+            color: #eee;
+            outline: none;
+            font-weight: bold;
+            border-radius: 5px;
+            height: 35px;
+            border: 0;
+            padding-left: 48px;
+            padding-right: 20px;
+            font-size: 1rem;
+            background: url('~/../../Content/images/search.png') no-repeat rgba(255, 255, 255, 0.3);
+            background-position: 15px center;
+            background-size: 20px 20px;
+        }
+
+            #search-container input::placeholder {
+                color: #ddd;
+                font-weight: bold;
+            }
+
+    #conversation-list {
+        grid-area: conversation-list;
+        overflow-y: scroll;
+    }
+
+    .conversation {
+        display: grid;
+        grid-template-columns: 40px 1fr max-content;
+        grid-gap: 1px;
+        color: #ddd;
+        font-size: 15px;
+        border-bottom: 1px solid #002C88;
+        padding: 10px 20px 0px 20px;
+    }
+
+        .conversation.active,
+        .conversation:hover {
+            background: #002C88;
+        }
+
+        .conversation:hover {
+            cursor: pointer;
+        }
+
+        .conversation > img {
+            grid-row: span 2;
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+        }
+
+    .title-text {
+        font-weight: bold;
+        color: #eee;
+        padding-left: 5px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .create-date {
+        color: #ddd;
+        font-size: 1rem;
+    }
+
+    .conversation-message {
+        grid-column: span 2;
+        padding-left: 5px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #new-message-container {
+        display: grid;
+        grid: 40px / 40px;
+        align-content: center;
+        grid-area: new-message-container;
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        border-radius: 0 0 0 10px;
+        padding: 0 15px;
+    }
+
+        #new-message-container a {
+            display: grid;
+            place-content: center center;
+            background: #eee;
+            border-radius: 100%;
+            color: #002C88;
+            text-decoration: none;
+            font-size: 3.6rem;
+        }
+
+
+
+    #chat-title,
+    #chat-form {
+        background: #eee;
+    }
+
+    #chat-title {
+        display: grid;
+        grid: 36px / 1fr 36px;
+        align-content: center;
+        align-items: center;
+        grid-area: chat-title;
+        color: #0048AA;
+        font-weight: bold;
+        font-size: 1.0rem;
+        border-radius: 0 10px 0 0;
+        box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.75);
+        padding: 0 20px;
+    }
+
+        #chat-title > img {
+            cursor: pointer;
+        }
+
+    #chat-message-list {
+        grid-area: chat-message-list;
+        overflow: auto;
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 0 20px;
+        overflow-y: scroll;
+    }
+
+    .message-row {
+        display: grid;
+        grid-template-columns: 70%;
+        margin-bottom: 20px;
+    }
+
+    .message-content {
+        display: grid;
+    }
+
+    .you-message {
+        justify-content: end;
+    }
+
+        .you-message .message-content {
+            justify-items: end;
+        }
+
+    .other-message {
+        justify-items: start;
+    }
+
+        .other-message .message-content {
+            grid-template-columns: 48px 1fr;
+            grid-column-gap: 15px;
+        }
+
+    .message-row img {
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+        grid-row: span 2;
+    }
+
+    .message-text {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+        margin-bottom: 5px;
+    }
+
+    .message-time {
+        font-size: 0.75rem;
+        color: #777;
+    }
+
+    .you-message .message-text {
+        background: #0048AA;
+        color: #eee;
+        border: 1px solid #0048AA;
+        border-radius: 14px 14px 0px 14px;
+    }
+
+    .other-message .message-text {
+        background: #eee;
+        color: #111;
+        border: 1px solid #0048AA;
+        border-radius: 0 14px 14px 14px;
+    }
+
+    #chat-form form {
+        display: grid;
+        grid: 50px / 600px 1fr;
+        align-content: center;
+        align-items: center;
+        grid-gap: 15px;
+        grid-area: chat-form;
+        border-radius: 0 0 10px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        padding-left: 42px;
+        padding-right: 22px;
+    }
+
+        #chat-form form input {
+            outline: none;
+            padding: 15px;
+            border: 2px solid #ddd;
+            color: #330;
+            border-radius: 8px;
+            font-size: 1.0rem;
+            height: 40px;
+        }
+
+
+        #chat-form form button {
+            outline: none;
+            background: #0048AA;
+            border: 2px #ddd;
+            color: #ddd;
+            border-radius: 10px;
+            height: 35px;
+        }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div id="chat-container">
+                <div id="search-container">
+                    Your Friends
+                </div>
+                <div id="conversation-list">
+                    @Html.Action("FriendsListPartial", "Message")
+                </div>
+                <div id="new-message-container">
+
+                </div>
+
+                <div id="chat-title">
+                    @if (Session["IdReceive"] == null)
+                    {
+                        <div style="color:red">@ViewBag.CustomerReceive</div>
+
+                    }
+
+                    else
+                    {
+                        @ViewBag.CustomerReceive
+                    }
+
+                </div>
+
+                <div id="chat-message-list" onscroll="myFunctionScroll()">
+
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.IdUserSend == int.Parse(User.Identity.Name))
+                        {
+                            <div class="message-row you-message">
+                                <div class="message-content">
+
+                                    <div class="message-text">@Html.DisplayFor(modelItem => item.ContentMessage)</div>
+                                    <div class="message-time">@Html.DisplayFor(modelItem => item.TimeMessage)</div>
+
+
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="message-row other-message">
+                                <div class="message-content">
+
+                                    <img src='@Url.Content("~/"+ Html.DisplayFor(modelItem => item.Customer.Image))' />
+
+                                    <div class="message-text">@Html.DisplayFor(modelItem => item.ContentMessage)</div>
+                                    <div class="message-time">@Html.DisplayFor(modelItem => item.TimeMessage)</div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+                <div id="chat-form">
+
+
+
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken();
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+
+                        @*<input type="text" name="content" placeholder="type a message" id="txtText" onkeyup='saveValue(this);'>*@
+                        <input type="text" name="content" placeholder="type a message, max is 120 character" id="txtMessage" maxlength="120" />
+                        <button type="submit">Send</button>
+                    }
+
+
+
+                </div>
+                <div>@ViewBag.Respond</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<script>
+
+    function autoRefresh() {
+        var x = 0;
+        var y = '';
+        x = myFunctionScroll();
+        y = myFunctionText();
+
+    
+        if (x === 0 && y === '') window.location = window.location.href;
+    }
+
+
+    setInterval('autoRefresh()', 20000);
+
+    function myFunctionScroll() {
+        var elmnt = document.getElementById("chat-message-list");
+
+        var x = elmnt.scrollTop;
+        return x;
+    }
+
+    window.onload = function () {
+        document.getElementById("txtMessage").focus();
+    };
+
+    function myFunctionText() {
+        var text = document.getElementById("txtMessage").value;
+        return text;
+
+    }
+</script>

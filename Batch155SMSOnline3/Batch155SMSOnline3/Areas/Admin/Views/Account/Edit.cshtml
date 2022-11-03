@@ -1,0 +1,276 @@
+﻿@model Batch155SMSOnline3.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/_LayoutDashboard.cshtml";
+}
+
+
+<style>
+    .form-group small {
+        color: #e74c3c;
+        font-size: 16px;
+        visibility: hidden;
+    }
+
+    .form-group.error small {
+        visibility: visible;
+    }
+</style>
+
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Edit", "Account", FormMethod.Post, htmlAttributes: new { @enctype = "multipart/form-data", @id = "sign-up-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        <div class="row">
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="col-sm-6">
+
+                <div class="form-group">
+                    <label class="control-label">Username</label>
+                    <div>
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @id = "username" } })
+                        <small>Error message</small>
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        @if (ViewBag.errorUsername != null)
+                        {
+                            <p class="text-danger">@ViewBag.errorUsername</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Full Name</label>
+                    <div>
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", @id = "fullName" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        <small>Error message</small>
+                    </div>
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.Password)
+            <div class="col-sm-4">
+
+                <div class="form-group">
+                    <label class="control-label">Date Of Birth</label>
+
+                    @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+
+                    @if (ViewBag.errorBirthDay != null)
+                    {
+                        <p class="text-danger">@ViewBag.errorBirthDay</p>
+                    }
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Gender</label>
+
+                    @Html.DropDownListFor(model => model.Gender, new SelectList(new List<Object>{
+                                             new { value = true , text = "Male"},
+                                             new { value = false , text = "Female" }
+                                         }, "value", "text"), new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Address</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @id = "address" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        <small>Error message</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Phone Number</label>
+
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @id = "phoneNumber" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    <small>Error message</small>
+
+                    @if (ViewBag.errorPhoneNumber != null)
+                    {
+                        <p class="text-danger">@ViewBag.errorPhoneNumber</p>
+                    }
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Identity Card</label>
+
+                    @Html.EditorFor(model => model.IdentityCard, new { htmlAttributes = new { @class = "form-control", @id = "identityCard" } })
+                    @Html.ValidationMessageFor(model => model.IdentityCard, "", new { @class = "text-danger" })
+                    <small>Error message</small>
+
+                    @if (ViewBag.errorPhoneNumber != null)
+                    {
+                        <p class="text-danger">@ViewBag.errorIdentityCard</p>
+                    }
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">User Role</label>
+                    @Html.DropDownListFor(model => model.UserRole, new SelectList(new List<Object>{
+                                            new { value = "Admin" , text = "Admin"},
+                                            new { value = "Employee" , text = "Employee" }
+                                        }, "value", "text"), new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label class="control-label">Stop</label>
+                    <label class="checkbox-inline">
+                        @if (Model.Stop == true)
+                        {
+                            @Html.CheckBox("Stop", true)
+                        }
+                        else
+                        {
+                            @Html.CheckBox("Stop", false)
+                        }
+                      
+                    </label>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Edit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+        const form = document.getElementById('sign-up-form');
+        const username = document.getElementById('username');
+      
+        const confirmPassword = document.getElementById('confirmPassword');
+        const fullName = document.getElementById('fullName');
+        const address = document.getElementById('address');
+        const phoneNumber = document.getElementById('phoneNumber');
+        const identityCard = document.getElementById('identityCard');
+
+        form.addEventListener('submit', e => {
+            if (!checkInputs()) e.preventDefault();
+
+
+        });
+
+        function checkInputs() {
+
+            const usernameValue = username.value.trim();
+      
+            const fullNameValue = fullName.value.trim();
+            const addressValue = address.value.trim();
+            const phoneNumberValue = phoneNumber.value.trim();
+            const identityCardValue = identityCard.value.trim();
+
+            var usernameBoolean = new Boolean(true);
+     
+            var fullNameBoolean = new Boolean(true);
+            var addressBoolean = new Boolean(true);
+            var phoneNumberBoolean = new Boolean(true);
+            var identityCardBoolean = new Boolean(true);
+
+
+
+            if (usernameValue === '') {
+                setErrorFor(username, 'Username cannot be blank');
+                usernameBoolean = false;
+            }
+            else {
+                setSuccessFor(username)
+            }
+
+          
+
+            if (fullNameValue === '') {
+                setErrorFor(fullName, 'Full Name cannot be blank');
+                fullNameBoolean = false;
+            }
+            else {
+                setSuccessFor(fullName)
+            }
+
+            if (addressValue === '') {
+                setErrorFor(address, 'Address cannot be blank');
+                addressBoolean = false;
+            }
+            else {
+                setSuccessFor(address)
+            }
+
+
+            if (phoneNumberValue === '') {
+                setErrorFor(phoneNumber, 'Phone Number cannot be blank');
+                phoneNumberBoolean = false;
+            }
+            else if (!isPhone(phoneNumberValue)) {
+                setErrorFor(phoneNumber, 'Not a valid phone');
+                phoneNumberBoolean = false;
+            }
+            else {
+                setSuccessFor(phoneNumber)
+            }
+
+            if (identityCardValue === '') {
+                setErrorFor(identityCard, 'Identity Card cannot be blank');
+                identityCardBoolean = false;
+            }
+            else if (!isIdentityCard(identityCardValue)) {
+                setErrorFor(identityCard, 'identity Card only 10 number');
+                identityCardBoolean = false;
+            }
+            else {
+                setSuccessFor(identityCard)
+            }
+
+
+            return (usernameBoolean && fullNameBoolean && phoneNumberBoolean && addressBoolean && identityCardBoolean);
+
+        }
+
+        function setErrorFor(input, message) {
+            const formControl = input.parentElement;
+            const small = formControl.querySelector('small');
+            formControl.className = 'form-group error';
+            small.innerText = message;
+        }
+
+        function setSuccessFor(input) {
+            const formControl = input.parentElement;
+            formControl.className = 'form-group';
+        }
+
+
+        function isPhone(phone) {
+            return /^((09|03|07|08|05)+([0-9]{8}))$/.test(phone);
+        }
+
+        function isIdentityCard(identitycard) {
+            return /^(([0-9]{10}))$/.test(identitycard);
+        }
+
+
+
+
+</script>

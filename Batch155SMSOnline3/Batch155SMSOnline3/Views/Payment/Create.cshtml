@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutSMS.cshtml";
+
+    var service = (Batch155SMSOnline3.Models.Service)ViewBag.Service;
+
+
+    var user = (Batch155SMSOnline3.Models.Customer)ViewBag.Customer;
+
+
+    DateTime timenow = DateTime.Now;
+    int month = ViewBag.timeService;
+
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    decimal y = service.Price.Value;
+}
+
+<div class="section group">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Create", "Payment", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Customer name:</label>
+                <label name="cusName">@user.CustomerName</label>
+                <input type="hidden" name="idcus" value="@user.Id">
+            </div>
+
+            <div class="form-group">
+                <label>Phone number:</label>
+                <label name="phone">@user.PhoneNumber</label>
+            </div>
+
+            <div class="form-group">
+                <label>Service name:</label>
+                <label name="serName">@service.ServiceName</label>
+                <input type="hidden" name="idser" value="@service.Id">
+            </div>
+
+            <div class="form-group">
+                <label>Price:</label>
+                <label name="price">@(y==9999 ? "Contact us" : String.Format(info, "{0:c}", y))</label>
+            </div>
+
+            <div class="form-group">
+                <label>Registration Date</label>
+                <label name="startdate">@timenow</label>
+            </div>
+
+            <div class="form-group">
+                <label>Expiration date:</label>
+                <label name="endDate">@(timenow.AddMonths(month).ToString("dd/MM/yyyy"))</label>
+            </div>
+
+            if (y == 9999)
+            {
+                <div class="card">
+                    <div class="card-block">
+
+                        <a href="@Url.Action("Contact", "Contact", new { id = service.Id })" class="btn waves-effect waves-light btn-info btn-outline-info">
+                            <i class="icofont icofont-info-square"></i>
+                            <span>
+                                <strong>Contact to us.</strong>
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+            }
+
+            <div class="card">
+                <div class="card-block">
+
+                    <a href="@Url.Action("Payment", "Payment", new { id = service.Id })" class="btn waves-effect waves-light btn-success btn-outline-success">
+                        <i class="icofont icofont-check-circled"></i>
+                        <span>
+                            <strong>Pay by VNPay.</strong>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+@*<button type="submit" class="btn">Register service |</button>
+    @Html.ActionLink("Thanh toan VNPay", "Payment", new { id = service.Id })
+*@

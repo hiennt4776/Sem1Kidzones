@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Batch155SMSOnline3.Models.LevelService>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/_LayoutDashboard.cshtml";
+    int x = 1;
+}
+
+@Html.ActionLink("Create New", "Create", "LevelServices", null, new { @class = "btn btn-success" })
+
+<div class="page-wrapper">
+    <!-- Page-body start -->
+    <div class="page-body">
+        <!-- Basic table card start -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Basic Table</h5>
+                <span>use class <code>table</code> inside table element</span>
+                <div class="card-header-right">
+                    <ul class="list-unstyled card-option">
+                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                        <li><i class="fa fa-minus minimize-card"></i></li>
+                        <li><i class="fa fa-refresh reload-card"></i></li>
+                        <li><i class="fa fa-trash close-card"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LevelName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TimeServerMonth)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.User.Username)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <th scope="row">@x</th>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LevelName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TimeServerMonth)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.Username)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                                    </td>
+                                </tr>
+                                x++;
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
